@@ -1,0 +1,8 @@
+*.o
+minirt
+libft/libft.a
+*.swp
+*.dylib
+*.swiftmodule
+*.swiftdoc
+*.swiftsourceinfo
