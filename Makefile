@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/08/30 13:01:09 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/08/30 17:40:19 by yoel             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,8 @@ debug: LFLAGS += $(DEBUG_LFLAGS)
 debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: $(NAME)
 
-$(NAME): $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/libmlx.dylib $(_OBJS) 
-	@$(CC) $(_OBJS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) $(MLX_DIR)/libmlx.dylib -o $(NAME)
+$(NAME): $(LIBFT_DIR)/$(LIBFT) $(MLX_LIB) $(_OBJS)
+	@$(CC) $(_OBJS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) $(MLX_LIB) -o $(NAME)
 	@echo "$(_OK) $(NAME) \t\tcompiled"
 
 $(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(DIRS)
@@ -78,7 +78,7 @@ $(LIBFT_DIR)/$(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR) all
 	@$(MAKE) -C $(LIBFT_DIR) bonus
 
-$(MLX_DIR)/libmlx.dylib:
+$(MLX_LIB):
 	@$(MAKE) -C $(MLX_DIR)
 ifeq ($(UNAME), Darwin)
 	@cp $(MLX_DIR)/libmlx.dylib libmlx.dylib
