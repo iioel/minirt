@@ -19,6 +19,14 @@ ifeq ($(UNAME),FreeBSD)
 	CC = clang
 endif
 
+# Color
+_COLOR		= \033[32m
+_BOLDCOLOR	= \033[32;1m
+_RESET		= \033[0m
+_CLEAR		= \033[0K\r\c
+_OK			= [\033[32mOK\033[0m]
+_RM			= [\033[31mRM\033[0m]
+
 NAME		= libmlx.a
 NAME_UNAME	= libmlx_$(UNAME).a
 
@@ -41,13 +49,16 @@ CFLAGS	= -O3 -I$(INC)
 all	: $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
+	@echo "[..] $(NAME)... compiling $*.c\r\c"
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) -w $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@echo "$(_CLEAR)"
 
-$(NAME)	: $(OBJ)
-	ar -r $(NAME) $(OBJ)
-	ranlib $(NAME)
-	cp $(NAME) $(NAME_UNAME)
+$(NAME)	.SILENT: $(OBJ)
+	@echo "$(_OK) $(NAME) \t\tcompiled"
+	@ar -rcs $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@cp $(NAME) $(NAME_UNAME)
 
 check: all
 	@test/run_tests.sh
@@ -61,6 +72,9 @@ show:
 	@printf "OBJ		:\n	$(OBJ)\n"
 
 clean	:
-	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+	@echo "[..] $(NAME)... removing $*.c\r\c"
+	@rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+	@echo "$(_CLEAR)"
+	@echo "$(_RM) $(NAME) \t\t full clean"
 
 .PHONY: all check show clean

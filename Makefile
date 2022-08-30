@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/08/30 13:01:09 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/08/30 17:40:19 by yoel             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,25 +27,37 @@ HEADERS = includes
 
 LIBFT = libft.a
 LIBFT_DIR = libft
+MLX =
 
+MAKE = make --no-print-directory
 CC = clang
 DEBUG_CFLAGS = -g3 -fsanitize=address -fno-omit-frame-pointer
 
 UNAME = $(shell uname -s)
+
+# Color
+_COLOR		= \033[32m
+_BOLDCOLOR	= \033[32;1m
+_RESET		= \033[0m
+_CLEAR		= \033[0K\r\c
+_OK			= [\033[32mOK\033[0m]
+_RM			= [\033[31mRM\033[0m]
+
 ifeq ($(UNAME), Linux)
     MLX_DIR = minilibx_linux
     CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR) -Wall -Wextra -Werror
     LFLAGS = $(CFLAGS) -lmlx -lXext -lX11 -lm -L $(MLX_DIR)
+	MLX_LIB = $(MLX_DIR)/libmlx.a
     DEBUG_LFLAGS = -static-libasan
 endif
 ifeq ($(UNAME), Darwin)
 	MLX_DIR = minilibx_osx
+	MLX_LIB = $(MLX_DIR)/libmlx.dylib
 	CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR) -Wall -Wextra -Werror
-	LFLAGS = $(CFLAGS) -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
+	LFLAGS = #$(CFLAGS) -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
 	DEBUG_LFLAGS = ""
 endif
 
-.PHONY : all mlx mlx_clean debug clean fclean re
 
 all: $(NAME)
 
@@ -53,40 +65,43 @@ debug: LFLAGS += $(DEBUG_LFLAGS)
 debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: $(NAME)
 
-$(NAME): $(_OBJS)
-	$(CC) $(_OBJS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) -o $(NAME)
+$(NAME): $(LIBFT_DIR)/$(LIBFT) $(MLX_LIB) $(_OBJS)
+	@$(CC) $(_OBJS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) $(MLX_LIB) -o $(NAME)
+	@echo "$(_OK) $(NAME) \t\tcompiled"
 
-$(_OBJS): $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(DIRS) $(LIBFT_DIR)/$(LIBFT) mlx
-	$(CC) -c $(CFLAGS) $< -o $@
+$(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(DIRS)
+	@echo "[..] $(NAME)... compiling $*.c\r\c"
+	@$(CC) -c $(CFLAGS) $< -o $@
+	@echo "$(_CLEAR)"
 
 $(LIBFT_DIR)/$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) all
-	$(MAKE) -C $(LIBFT_DIR) bonus
-	#cp $(LIBFT_DIR)/libft.h $(HEADERS)/libft.h
+	@$(MAKE) -C $(LIBFT_DIR) all
+	@$(MAKE) -C $(LIBFT_DIR) bonus
 
-mlx:
-	@echo "=========== Compiling MinilibX ==========="
-	$(MAKE) -C $(MLX_DIR)
+$(MLX_LIB):
+	@$(MAKE) -C $(MLX_DIR)
 ifeq ($(UNAME), Darwin)
-	cp $(MLX_DIR)/libmlx.dylib libmlx.dylib
+	@cp $(MLX_DIR)/libmlx.dylib libmlx.dylib
 endif
-#	cp $(MLX_DIR)/mlx.h $(HEADERS)/mlx.h
-	@echo "========= End Compiling MinilibX ========="
 
 mlx_clean:
-	$(MAKE) -C $(MLX_DIR) clean
-	rm -f libmlx.dylib
-#	rm -f $(HEADERS)/mlx.h
+	@$(MAKE) -C $(MLX_DIR) clean
+	@rm -f libmlx.dylib
 
 $(DIRS):
-	mkdir -p $(DIRS)
+	@mkdir -p $(DIRS)
 
 clean: mlx_clean
-	rm -rf $(OBJS_DIR)
-	$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "[..] $(NAME)... removing $*.c\r\c"
+	@rm -rf $(OBJS_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "$(_CLEAR)"
 
 fclean: mlx_clean
-	rm -rf $(OBJS_DIR) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	@rm -rf $(OBJS_DIR) $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "$(_RM) $(NAME) \t\tfull clean"
 
 re: fclean all
+
+.PHONY : all mlx mlx_clean debug clean fclean re
