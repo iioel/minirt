@@ -63,26 +63,42 @@ B_OBJS = $(patsubst %.c, %.o, $(B_SRCS))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+# Color
+_COLOR		= \033[32m
+_BOLDCOLOR	= \033[32;1m
+_RESET		= \033[0m
+_CLEAR		= \033[0K\r\c
+_OK			= [\033[32mOK\033[0m]
+_RM			= [\033[31mRM\033[0m]
+
 .PHONY: all bonus clean fclean re
 
 all: ${NAME}
 
 bonus: $(B_OBJS)
-	ar rcs $(NAME) $(B_OBJS)
+	@ar rcs $(NAME) $(B_OBJS)
 
-${NAME}: $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+${NAME} .SILENT: $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo "$(_OK) $(NAME) \t\tcompiled"
 
 $(OBJS): %.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	@echo "[..] $(NAME)... compiling $*.c\r\c"
+	@$(CC) -c $(CFLAGS) $< -o $@
+	@echo "$(_CLEAR)"
 
 $(B_OBJS): %.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	@echo "[..] $(NAME)... compiling $*.c\r\c"
+	@$(CC) -c $(CFLAGS) $< -o $@
+	@echo "$(_CLEAR)"
 
 clean:
-	rm -rf $(OBJS) $(B_OBJS)
+	@echo "[..] $(NAME)... removing $*.c\r\c"
+	@rm -rf $(OBJS) $(B_OBJS)
+	@echo "$(_CLEAR)"
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo "$(_RM) $(NAME) \t\tfull clean"
 
 re: fclean all
