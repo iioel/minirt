@@ -41,13 +41,16 @@ CFLAGS	= -O3 -I$(INC)
 all	: $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
+	@echo "[..] $(NAME)... compiling $*.c\r\c"
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@echo "$(_CLEAR)"
 
-$(NAME)	: $(OBJ)
-	ar -r $(NAME) $(OBJ)
-	ranlib $(NAME)
-	cp $(NAME) $(NAME_UNAME)
+$(NAME)	.SILENT: $(OBJ)
+	@echo "$(_OK) $(NAME) \tcompiled"
+	@ar -r $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@cp $(NAME) $(NAME_UNAME)
 
 check: all
 	@test/run_tests.sh
@@ -61,6 +64,9 @@ show:
 	@printf "OBJ		:\n	$(OBJ)\n"
 
 clean	:
-	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+	@echo "[..] $(NAME)... removing $*.c\r\c"
+	@rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+	@echo "$(_CLEAR)"
+	@echo "$(_RM) $(NAME) \tfull clean"
 
 .PHONY: all check show clean
