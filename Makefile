@@ -6,13 +6,19 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/08/30 17:40:19 by yoel             ###   ########.fr        #
+#    Updated: 2022/08/30 18:12:59 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
-SRCS = main.c
+SRCS = main.c \
+	   clean.c \
+	   window.c \
+	   catch_win.c \
+	   catch_key.c \
+	   catch_mouse.c \
+	   mlx_utils.c
 SRCS_DIR = src
 
 OBJS = $(SRCS:.c=.o)
