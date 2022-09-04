@@ -21,6 +21,7 @@
 
 # include "keys.h"
 # include "mouse.h"
+# include "object.h"
 
 typedef struct s_window
 {
@@ -64,5 +65,8 @@ int			catch_mouse_moves(int x, int y, t_window *w);
 t_img		*create_image(t_window *w);
 void		display_image(t_window *w, t_img *img);
 void		mlx_pixel_put_img(t_img *img, int x, int y, unsigned int color);
+
+// gnl.c
+char		*get_next_line(int fd);
 
 #endif
