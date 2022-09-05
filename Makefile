@@ -6,13 +6,17 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/08/30 18:12:59 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/09/05 13:39:09 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
 SRCS = main.c \
+	   vector_1.c \
+	   vector_2.c \
+	   vector_3.c \
+	   ray.c \
 	   clean.c \
 	   window.c \
 	   catch_win.c \
