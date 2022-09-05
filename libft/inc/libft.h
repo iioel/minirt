@@ -62,6 +62,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 int		ft_isspace(char c);
 double	ft_atof(const char *str);
 int		ft_atox(const char *str);
+void	skip_space(char **str);
 int		ft_sscanf(char *str, char *format, ...);
 
 t_list	*ft_lstnew(void *content);
