@@ -40,10 +40,14 @@ static void	define_hooks(t_window *w)
 	mlx_hook(w->w, 6, (1L << 6), catch_mouse_moves, w);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_window	*w;
+	t_list		*lst;
 
+	lst = NULL;
+	if (argc == 2)
+		lst = parsing(argv[1]);
 	w = create_win(500, 500, "Minirt");
 	if (! w)
 		exit(1);

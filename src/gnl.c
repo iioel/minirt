@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minirt.h"
 
 static char	*end_line(char **buffer, char *tmp, int format)
 {
@@ -36,7 +36,8 @@ static char	*end_line(char **buffer, char *tmp, int format)
 	return (ret);
 }
 
-static char	*read_line(int fd, char **buffer, char *curr_buffer, int buffer_size)
+static char	*read_line(int fd, char **buffer, char *curr_buffer,
+	int buffer_size)
 {
 	char		*next_line;
 	char		*tmp;

@@ -15,6 +15,17 @@
 
 # include "vector.h"
 
+typedef enum e_type
+{
+	ambient,
+	camera,
+	light,
+	sphere,
+	plane,
+	cylinder,
+	unknown
+}			t_type;
+
 typedef struct s_color
 {
 	unsigned char	r;
@@ -31,19 +42,19 @@ typedef struct s_point
 
 typedef struct s_object
 {
-	char	type;
+	t_type	type;
 }				t_object;
 
 typedef struct s_ambient
 {
-	char	type;
+	t_type	type;
 	double	lighting;
 	t_color	*color;
 }				t_ambient;
 
 typedef struct s_camera
 {
-	char			type;
+	t_type			type;
 	t_point			*point;
 	t_vector		*vect;
 	unsigned char	fov;
@@ -51,7 +62,7 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	char	type;
+	t_type	type;
 	t_point	*point;
 	double	brightness;
 	t_color	*color;
@@ -59,7 +70,7 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	char	type;
+	t_type	type;
 	t_point	*point;
 	double	diameter;
 	t_color	*color;
@@ -67,7 +78,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	char		type;
+	t_type		type;
 	t_point		*point;
 	t_vector	*vect;
 	t_color		*color;
@@ -75,7 +86,7 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	char		type;
+	t_type		type;
 	t_point		*point;
 	t_vector	*vect;
 	double		diameter;
