@@ -75,8 +75,8 @@ t_type		get_type(char *str);
 t_list		*parsing(char *file);
 
 // object.c
-void	*new_light(char *str);
-void	*new_sphere(char *str);
-void	*new_plane(char *str);
-void	*new_cylinder(char *str);
+void		*new_light(char *str);
+void		*new_sphere(char *str);
+void		*new_plane(char *str);
+void		*new_cylinder(char *str);
 #endif
