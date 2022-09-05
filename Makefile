@@ -18,7 +18,10 @@ SRCS = main.c \
 	   catch_win.c \
 	   catch_key.c \
 	   catch_mouse.c \
-	   mlx_utils.c
+	   mlx_utils.c\
+	   gnl.c\
+	   parsing.c\
+	   object.c
 SRCS_DIR = src
 
 OBJS = $(SRCS:.c=.o)

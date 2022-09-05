@@ -18,9 +18,11 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
 # include "keys.h"
 # include "mouse.h"
+# include "object.h"
 
 typedef struct s_window
 {
@@ -65,4 +67,16 @@ t_img		*create_image(t_window *w);
 void		display_image(t_window *w, t_img *img);
 void		mlx_pixel_put_img(t_img *img, int x, int y, unsigned int color);
 
+// gnl.c
+char		*get_next_line(int fd);
+
+// parsing.c
+t_type		get_type(char *str);
+t_list		*parsing(char *file);
+
+// object.c
+void		*new_light(char *str);
+void		*new_sphere(char *str);
+void		*new_plane(char *str);
+void		*new_cylinder(char *str);
 #endif
