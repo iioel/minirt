@@ -51,7 +51,7 @@ _RM			= [\033[31mRM\033[0m]
 
 ifeq ($(UNAME), Linux)
     MLX_DIR = minilibx_linux
-    CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR) -Wall -Wextra -Werror
+    CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR)/inc -Wall -Wextra -Werror
     LFLAGS = $(CFLAGS) -lmlx -lXext -lX11 -lm -L $(MLX_DIR)
 	MLX_LIB = $(MLX_DIR)/libmlx.a
     DEBUG_LFLAGS = -static-libasan
@@ -59,7 +59,7 @@ endif
 ifeq ($(UNAME), Darwin)
 	MLX_DIR = minilibx_osx
 	MLX_LIB = $(MLX_DIR)/libmlx.dylib
-	CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR) -Wall -Wextra -Werror
+	CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR)/inc -Wall -Wextra -Werror
 	LFLAGS = #$(CFLAGS) -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
 	DEBUG_LFLAGS = ""
 endif
