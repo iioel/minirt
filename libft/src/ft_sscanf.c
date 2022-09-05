@@ -70,6 +70,7 @@ int	ft_sscanf(char *str, char *format, ...)
 	while (*format != '\0')
 	{
 		skip_arg(&str, &format);
+		skip_space(&str);
 		if (*format == '%')
 		{
 			format++;
