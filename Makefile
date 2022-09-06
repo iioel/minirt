@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/09/06 13:30:22 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/09/20 14:57:37 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@ NAME = minirt
 
 SRCS = main.c \
 	   ray.c \
+	   camera.c \
 	   clean.c \
 	   window.c \
 	   gnl.c \
 	   parsing.c \
 	   object.c \
+	   color.c \
 	   vector/vector_1.c \
 	   vector/vector_2.c \
 	   vector/vector_3.c \

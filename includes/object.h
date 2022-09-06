@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/06 15:30:07 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:49:34 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "vector.h"
 # include "point.h"
+# include "color.h"
 
 typedef enum e_type
 {
@@ -26,13 +27,6 @@ typedef enum e_type
 	cylinder,
 	unknown
 }			t_type;
-
-typedef struct s_color
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-}				t_color;
 
 typedef struct s_object
 {
@@ -52,6 +46,12 @@ typedef struct s_camera
 	t_point			origin;
 	t_vector		dir;
 	unsigned char	fov;
+	double			viewport_height;
+	double			viewport_width;
+	double			focal_length;
+	t_vector		horizontal;
+	t_vector		vertical;
+	t_vector		upper_left_corner;
 }				t_camera;
 
 typedef struct s_light
