@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 16:23:45 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:03:01 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OBJECT_H
 
 # include "vector.h"
+# include "point.h"
 
 typedef enum e_type
 {
@@ -32,13 +33,6 @@ typedef struct s_color
 	unsigned char	g;
 	unsigned char	b;
 }				t_color;
-
-typedef struct s_point
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_point;
 
 typedef struct s_object
 {
