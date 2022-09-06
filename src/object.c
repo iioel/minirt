@@ -24,6 +24,7 @@ void	*new_light(char *str)
 		&(l->point.y), &(l->point.z), &(l->brightness), &(l->color.r),
 		&(l->color.g), &(l->color.b));
 	l->type = get_type(stype);
+	l->intercept = NULL;
 	free(stype);
 	return (l);
 }
@@ -40,6 +41,7 @@ void	*new_sphere(char *str)
 		&(s->point.y), &(s->point.z), &(s->diameter), &(s->color.r),
 		&(s->color.g), &(s->color.b));
 	s->type = get_type(stype);
+	s->intercept = &sphere_inter;
 	free(stype);
 	return (s);
 }
@@ -56,6 +58,7 @@ void	*new_plane(char *str)
 		&(p->point.y), &(p->point.z), &(p->vect.x), &(p->vect.y),
 		&(p->vect.z), &(p->color.r), &(p->color.g), &(p->color.b));
 	p->type = get_type(stype);
+	p->intercept = NULL;
 	free(stype);
 	return (p);
 }
@@ -73,6 +76,7 @@ void	*new_cylinder(char *str)
 		&(c->vect.y), &(c->vect.z), &(c->diameter), &(c->height),
 		&(c->color.r), &(c->color.g), &(c->color.b));
 	c->type = get_type(stype);
+	c->intercept = NULL;
 	free(stype);
 	return (c);
 }

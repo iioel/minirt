@@ -23,6 +23,7 @@
 # include "keys.h"
 # include "mouse.h"
 # include "object.h"
+# include "ray.h"
 
 typedef struct s_window
 {
@@ -82,4 +83,7 @@ void		*new_light(char *str);
 void		*new_sphere(char *str);
 void		*new_plane(char *str);
 void		*new_cylinder(char *str);
+
+// ray_intersect.c
+int			sphere_inter(t_object *o, t_ray *r);
 #endif
