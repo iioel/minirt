@@ -6,32 +6,32 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/09/05 13:39:09 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/09/06 13:30:22 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
 SRCS = main.c \
-	   vector_1.c \
-	   vector_2.c \
-	   vector_3.c \
 	   ray.c \
 	   clean.c \
 	   window.c \
-	   catch_win.c \
-	   catch_key.c \
-	   catch_mouse.c \
-	   mlx_utils.c\
-	   gnl.c\
-	   parsing.c\
-	   object.c
+	   gnl.c \
+	   parsing.c \
+	   object.c \
+	   vector/vector_1.c \
+	   vector/vector_2.c \
+	   vector/vector_3.c \
+	   mlx_tools/catch_win.c \
+	   mlx_tools/catch_key.c \
+	   mlx_tools/catch_mouse.c \
+	   mlx_tools/mlx_utils.c
 SRCS_DIR = src
 
 OBJS = $(SRCS:.c=.o)
 OBJS_DIR = obj
 
-DIRS = obj
+DIRS = obj obj/vector obj/mlx_tools
 
 _SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS))
 _OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))
