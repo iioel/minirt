@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 16:23:45 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:43:14 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,9 @@ void	*new_camera(char *str)
 	c = ft_calloc(1, sizeof(t_camera));
 	if (!c)
 		return (NULL);
-	c->point = ft_calloc(1, sizeof(t_point));
-	if (!(c->point))
-		return (NULL);
-	c->vect = ft_calloc(1, sizeof(t_vector));
-	if (!(c->vect))
-		return (NULL);
-	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f %i", &stype, &(c->point->x),
-		&(c->point->y), &(c->point->z), &(c->vect->x), &(c->vect->y),
-		&(c->vect->z), &(c->fov));
+	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f %i", &stype, &(c->origin.x),
+		&(c->origin.y), &(c->origin.z), &(c->dir.x), &(c->dir.y),
+		&(c->dir.z), &(c->fov));
 	c->type = get_type(stype);
 	free(stype);
 	return (c);
@@ -60,11 +54,8 @@ void	*new_ambient(char *str)
 	a = ft_calloc(1, sizeof(t_ambient));
 	if (!a)
 		return (NULL);
-	a->color = ft_calloc(1, sizeof(t_color));
-	if (!(a->color))
-		return (NULL);
-	ft_sscanf(str, "%s %f #%2x%2x%2x", &stype, &(a->lighting), &(a->color->r),
-		&(a->color->g), &(a->color->b));
+	ft_sscanf(str, "%s %f #%2x%2x%2x", &stype, &(a->lighting), &(a->color.r),
+		&(a->color.g), &(a->color.b));
 	a->type = get_type(stype);
 	free(stype);
 	return (a);
