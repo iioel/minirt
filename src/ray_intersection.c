@@ -12,6 +12,16 @@
 
 #include "minirt.h"
 
+
+
+int	plane_inter(t_object *o, t_ray *r)
+{
+	t_plane		pl;
+
+	pl = (t_plane *)o;
+	return (vec_dot(r->dir, pl->vect) != 0);
+}
+
 int	sphere_inter(t_object *o, t_ray *r)
 {
 	t_vector	oc;
