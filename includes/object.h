@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:12:56 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 15:13:46 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "color.h"
 # include "ray.h"
 # include "minirt.h"
+
+typedef struct s_ray t_ray;
 
 typedef struct s_object t_object;
 
@@ -34,7 +36,7 @@ typedef enum e_type
 	unknown
 }			t_type;
 
-typedef struct s_object
+struct s_object
 {
 	t_type		type;
 	t_intercept	intercept;

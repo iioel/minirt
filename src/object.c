@@ -57,8 +57,12 @@ void	*new_plane(char *str)
 	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f #%2x%2x%2x", &stype, &(p->point.x),
 		&(p->point.y), &(p->point.z), &(p->vect.x), &(p->vect.y),
 		&(p->vect.z), &(p->color.r), &(p->color.g), &(p->color.b));
+	// printf("str = %s\n", str);
+	// printf("%f %f %f\n", p->point.x, p->point.y, p->point.z);
+	// printf("%f %f %f\n", p->vect.x, p->vect.y, p->vect.z);
+	// printf("%i %i %i\n", p->color.r, p->color.g, p->color.b);
 	p->type = get_type(stype);
-	p->intercept = NULL;
+	p->intercept = NULL; //&plane_inter;
 	free(stype);
 	return (p);
 }

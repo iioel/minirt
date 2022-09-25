@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:22:25 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 10:17:38 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 15:16:18 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	ray_color(t_ray ray, t_color *color, t_list *objs)
 	color->r = y * incolor.r + (1. - y) * outcolor.r;
 	color->g = y * incolor.g + (1. - y) * outcolor.g;
 	color->b = y * incolor.b + (1. - y) * outcolor.b;
+	get_ray_color(ray, color, objs);
 	return (0);
 }

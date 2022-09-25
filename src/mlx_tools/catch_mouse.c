@@ -43,6 +43,8 @@ int	catch_button_release(int t, t_window *w)
 int	catch_mouse_moves(int x, int y, t_window *w)
 {
 	w = save_window(NULL);
-	printf("Mouse moving in x: %d, y: %d ...\n", x, y);
+	(void)x;
+	(void)y;
+	//printf("Mouse moving in x: %d, y: %d ...\n", x, y);
 	return (0);
 }

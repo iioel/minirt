@@ -68,6 +68,7 @@ void	*new_object(char *str)
 	t_type	type;
 	char	*stype;
 
+	printf("%s\n", str);
 	if (!ft_sscanf(str, "%s", &stype))
 		return (NULL);
 	type = get_type(stype);

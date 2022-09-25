@@ -46,16 +46,18 @@ void	skip_float(char **str)
 {
 	int	i;
 
-	i = -1;
-	while (ft_isdigit((*str)[++i]))
-		;
+	i = 0;
+	if ((*str)[i] == '-')
+		i++;
+	while (ft_isdigit((*str)[i]))
+		i++;
 	if ((*str)[i] == '.')
 		i++;
-	while (ft_isdigit((*str)[++i]))
-		;
+	while (ft_isdigit((*str)[i]))
+		i++;
 	if ((*str)[i] == 'e' || (*str)[i] == 'E')
 		i++;
-	while (ft_isdigit((*str)[++i]))
-		;
+	while (ft_isdigit((*str)[i]))
+		i++;
 	*str += i;
 }

@@ -18,6 +18,8 @@
 # include "vector.h"
 # include "color.h"
 
+typedef struct s_window t_window;
+
 typedef struct s_ray
 {
 	t_point		origin;

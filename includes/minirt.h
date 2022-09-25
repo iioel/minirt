@@ -25,6 +25,12 @@
 # include "object.h"
 # include "ray.h"
 
+typedef struct s_camera t_camera;
+typedef enum e_type t_type;
+typedef struct s_object t_object;
+typedef struct s_ray t_ray;
+typedef struct s_color t_color;
+
 typedef struct s_window
 {
 	void		*mlx;
@@ -86,4 +92,6 @@ void		*new_cylinder(char *str);
 
 // ray_intersect.c
 int			sphere_inter(t_object *o, t_ray *r);
+int			plane_inter(t_object *o, t_ray *r);
+int			get_ray_color(t_ray ray, t_color *color, t_list *lst);
 #endif

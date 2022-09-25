@@ -74,7 +74,11 @@ int	scan_str(char **s, int n, char **str)
 
 double	scan_float(char **s, double *f)
 {
-	*f = ft_atof(*s);
+	char *str;
+
+	str = ft_strdup(*s);
+	*f = ft_atof(str);
 	skip_float(s);
+	free(str);
 	return (0);
 }
