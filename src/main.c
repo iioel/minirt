@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:15:35 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 18:07:35 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	little_test(t_window *w)
 	display_image(w, img);
 }
 
-static void	render(t_window *w)
+void	render(t_window *w)
 {
 	int		x;
 	int		y;

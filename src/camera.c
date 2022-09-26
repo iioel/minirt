@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:02:06 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 11:47:29 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 19:11:59 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ void	camera_init(t_camera *c, double a_r)
 void	camera_upd_view(t_camera *c)
 {
 	t_vector	tmp;
-	t_vector	w = vec_unit(c->dir);
-	t_vector	u = vec_unit(vec_cross(vec_init(0., 1., 0.), w));
-	t_vector	v = vec_cross(w, u);
+	t_vector	w;
+	t_vector	u;
+	t_vector	v;
+
+	w = vec_unit(c->dir);
+	u = vec_unit(vec_cross(vec_init(0., 1., 0.), w));
+	v = vec_cross(w, u);
 	c->horizontal = vec_mul_nb(u, c->viewport_width);
 	c->vertical = vec_mul_nb(v, c->viewport_height);
 	tmp = vec_sub(c->origin, vec_div(c->horizontal, 2));

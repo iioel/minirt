@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:26:52 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 18:08:29 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct s_img
 	int		line_bytes;
 	int		endian;
 }				t_img;
+
+// main.c
+void		render(t_window *w);
 
 // clean.c
 void		*clean(void *p);

@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:20:51 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 16:08:06 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:54:31 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define KEY_ESC 53
 # define KEY_UP 126
 # define KEY_DOWN 125
+# define KEY_LEFT 5000
+# define KEY_RIGHT 5000
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
@@ -31,6 +33,8 @@
 # define KEY_ESC_LNX 65307
 # define KEY_UP_LNX 65362
 # define KEY_DOWN_LNX 65364
+# define KEY_LEFT_LNX 65361
+# define KEY_RIGHT_LNX 65363
 # define KEY_W_LNX 119
 # define KEY_A_LNX 97
 # define KEY_S_LNX 115
