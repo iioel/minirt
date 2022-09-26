@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/06 16:53:28 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:26:52 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # include "keys.h"
 # include "mouse.h"
 # include "object.h"
+# include "ray.h"
+
+typedef struct s_camera	t_camera;
+typedef enum e_type		t_type;
+typedef struct s_object	t_object;
+typedef struct s_ray	t_ray;
+typedef struct s_color	t_color;
 
 typedef struct s_window
 {
@@ -82,4 +89,9 @@ void		*new_light(char *str);
 void		*new_sphere(char *str);
 void		*new_plane(char *str);
 void		*new_cylinder(char *str);
+
+// ray_intersect.c
+int			sphere_inter(t_object *o, t_ray *r);
+int			plane_inter(t_object *o, t_ray *r);
+int			get_ray_color(t_ray ray, t_color *color, t_list *lst);
 #endif

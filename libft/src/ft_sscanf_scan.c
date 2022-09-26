@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sscanf_scan.h                                   :+:      :+:    :+:   */
+/*   ft_sscanf_scan.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:12:35 by ahuber            #+#    #+#             */
-/*   Updated: 2021/11/05 17:38:29 by yalthaus         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:07:55 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ int	scan_str(char **s, int n, char **str)
 
 double	scan_float(char **s, double *f)
 {
-	*f = ft_atof(*s);
+	char	*str;
+
+	str = ft_strdup(*s);
+	*f = ft_atof(str);
 	skip_float(s);
+	free(str);
 	return (0);
 }

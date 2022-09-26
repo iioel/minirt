@@ -77,10 +77,17 @@ double	ft_atof(const char *str)
 	char		*s;
 	double		rep;
 	int			e;
+	double		sign;
 
 	s = (char *)str;
+	sign = 1.0;
 	rep = 0;
 	e = 0;
+	if (*s == '-')
+	{
+		s++;
+		sign = -1.0;
+	}
 	get_int(&s, &rep);
 	if (*s++ == '.')
 		e = get_dec(&s, &rep);
@@ -88,5 +95,5 @@ double	ft_atof(const char *str)
 		e += get_exp(&s);
 	if (e != 0)
 		calc_dec(&rep, e);
-	return (rep);
+	return (rep * sign);
 }

@@ -43,6 +43,7 @@ void	*new_camera(char *str)
 		&(c->dir.z), &(c->fov));
 	c->type = get_type(stype);
 	free(stype);
+	c->intercept = NULL;
 	return (c);
 }
 
@@ -57,6 +58,7 @@ void	*new_ambient(char *str)
 	ft_sscanf(str, "%s %f #%2x%2x%2x", &stype, &(a->lighting), &(a->color.r),
 		&(a->color.g), &(a->color.b));
 	a->type = get_type(stype);
+	a->intercept = NULL;
 	free(stype);
 	return (a);
 }
@@ -66,6 +68,7 @@ void	*new_object(char *str)
 	t_type	type;
 	char	*stype;
 
+	printf("%s\n", str);
 	if (!ft_sscanf(str, "%s", &stype))
 		return (NULL);
 	type = get_type(stype);
