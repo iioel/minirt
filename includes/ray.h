@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:19:22 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/20 15:32:57 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:26:08 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "vector.h"
 # include "color.h"
 
-typedef struct s_window t_window;
+typedef struct s_window	t_window;
 
 typedef struct s_ray
 {

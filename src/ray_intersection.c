@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 17:27:29 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:20:25 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ int	sphere_inter(t_object *o, t_ray *r)
 
 int	get_ray_color(t_ray ray, t_color *color, t_list *lst)
 {
-
-	(void)ray;
-	(void)color;
 	while (lst)
 	{
-		if (((t_object *)lst->content)->intercept && ((t_object *)lst->content)->intercept((lst->content), &ray))
+		if (((t_object *)lst->content)->intercept
+			&& ((t_object *)lst->content)->intercept((lst->content), &ray))
 		{
 			*color = ((t_object *)lst->content)->color;
 			return (0);

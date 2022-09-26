@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/06 15:45:27 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:28:32 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,8 @@ void	*new_plane(char *str)
 	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f #%2x%2x%2x", &stype, &(p->point.x),
 		&(p->point.y), &(p->point.z), &(p->vect.x), &(p->vect.y),
 		&(p->vect.z), &(p->color.r), &(p->color.g), &(p->color.b));
-	// printf("str = %s\n", str);
-	// printf("%f %f %f\n", p->point.x, p->point.y, p->point.z);
-	// printf("%f %f %f\n", p->vect.x, p->vect.y, p->vect.z);
-	// printf("%i %i %i\n", p->color.r, p->color.g, p->color.b);
 	p->type = get_type(stype);
-	p->intercept = NULL; //&plane_inter;
+	p->intercept = NULL;
 	free(stype);
 	return (p);
 }

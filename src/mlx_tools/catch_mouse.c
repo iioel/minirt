@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:55:21 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 17:20:31 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:28:53 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int	catch_mouse_moves(int x, int y, t_window *w)
 	w = save_window(NULL);
 	(void)x;
 	(void)y;
-	//printf("Mouse moving in x: %d, y: %d ...\n", x, y);
 	return (0);
 }
