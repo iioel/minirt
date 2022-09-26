@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:22:25 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/20 15:51:33 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:17:38 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ int	ray_color(t_ray ray, t_color *color, t_list *objs)
 {
 	t_color	incolor;
 	t_color	outcolor;
+	double	y;
 
 	if (!objs)
 		;
 	incolor = color_init(0x00, 0x00, 0xFF);
 	outcolor = color_init(0xFF, 0xFF, 0xFF);
-	ray.dir.y = (ray.dir.y + 1.) / 2;
-	color->r = ray.dir.y * incolor.r + (1. - ray.dir.y) * outcolor.r;
-	color->g = ray.dir.y * incolor.g + (1. - ray.dir.y) * outcolor.g;
-	color->b = ray.dir.y * incolor.b + (1. - ray.dir.y) * outcolor.b;
+	y = (ray.dir.y + 1.) / 2;
+	color->r = y * incolor.r + (1. - y) * outcolor.r;
+	color->g = y * incolor.g + (1. - y) * outcolor.g;
+	color->b = y * incolor.b + (1. - y) * outcolor.b;
 	return (0);
 }
