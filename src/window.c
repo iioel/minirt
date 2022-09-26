@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:35:23 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 16:01:09 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:42:04 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@ t_window	*save_window(t_window *w)
 	return (win);
 }
 
-t_window	*create_win(int x, int y, char *name)
+t_window	*create_win(int width, double a_r, char *name)
 {
 	t_window	*w;
 
 	w = ft_calloc(1, sizeof(t_window));
 	if (! w)
 		return (NULL);
-	w->width = x;
-	w->height = y;
+	w->aspect_ratio = a_r;
+	w->width = width;
+	w->height = (int)(w->width / w->aspect_ratio);
 	w->mlx = mlx_init();
 	if (! w->mlx)
 		return (clean(w));
-	w->w = mlx_new_window(w->mlx, x, y, name);
+	w->w = mlx_new_window(w->mlx, w->width, w->height, name);
 	if (! w->w)
 		return (clean(w));
 	return (w);

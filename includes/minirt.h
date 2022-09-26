@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/08/30 16:23:45 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:53:28 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@
 
 typedef struct s_window
 {
-	void	*mlx;
-	void	*w;
-	int		width;
-	int		height;
+	void		*mlx;
+	void		*w;
+	double		aspect_ratio;
+	int			width;
+	int			height;
+	t_list		*objs;
+	t_camera	*camera;
 }				t_window;
 
 typedef struct s_img
@@ -48,7 +51,7 @@ void		*clean(void *p);
 
 // window.c
 t_window	*save_window(t_window *w);
-t_window	*create_win(int x, int y, char *name);
+t_window	*create_win(int width, double a_r, char *name);
 int			clean_win(t_window *w);
 
 // catch_win.c
