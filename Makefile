@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/09/20 14:57:37 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/09/26 18:18:00 by yoel             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,14 @@ SRCS = main.c \
 	   parsing.c \
 	   object.c \
 	   color.c \
+	   action.c \
 	   vector/vector_1.c \
 	   vector/vector_2.c \
 	   vector/vector_3.c \
 	   mlx_tools/catch_win.c \
 	   mlx_tools/catch_key.c \
 	   mlx_tools/catch_mouse.c \
-	   mlx_tools/mlx_utils.c\
+	   mlx_tools/mlx_utils.c \
 	   ray_intersection.c
 SRCS_DIR = src
 

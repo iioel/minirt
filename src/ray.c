@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:22:25 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:16:18 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 16:03:01 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_ray	pix2ray(t_window *w, int x, int y)
 	double		u;
 	double		v;
 
-	u = (double)x / (w->width - 1);
-	v = (double)y / (w->height - 1);
+	u = (double)x / ((double)w->width - 1.);
+	v = (double)y / ((double)w->height - 1.);
 	tmp = vec_add(w->camera->upper_left_corner,
 			vec_mul_nb(w->camera->horizontal, u));
 	tmp = vec_sub(tmp, vec_mul_nb(w->camera->vertical, v));
