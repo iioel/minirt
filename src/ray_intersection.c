@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:20:25 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/26 15:42:07 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	sphere_inter(t_object *o, t_ray *r)
 	b = 2.0 * vec_dot(oc, r->dir);
 	c = vec_dot(oc, oc) - ((sp->diameter / 2) * sp->diameter / 2);
 	disc = b * b - 4 * vec_dot(r->dir, r->dir) * c;
-	printf("%f %f %f\n", r->dir.x, r->dir.y, r->dir.z);
+	//printf("%f %f %f\n", r->dir.x, r->dir.y, r->dir.z);
 	return (disc > 0);
 }
 
