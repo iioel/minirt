@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:02:06 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 19:11:59 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/27 11:31:43 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	camera_init(t_camera *c, double a_r)
 {
 	double	f;
 
-	f = tan((c->fov * M_PI / 180));
+	f = tan((c->fov * M_PI / 180) / 2);
 	c->viewport_height = 2.;
 	c->viewport_width = a_r * c->viewport_height;
 	c->focal_length = 1. / f;
