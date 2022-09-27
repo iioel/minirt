@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/27 14:20:38 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:50:45 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	plane_inter(t_object *o, t_ray *r)
 	D = vec_mul(pl->vect, r->dir);
 	t = (d.x + d.y + d.z) / (D.x + D.y + D.z);
 
-	return (t < 0.);
+	return (t > 0.);
 }
 
 int	sphere_inter(t_object *o, t_ray *r)
