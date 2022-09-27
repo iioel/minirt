@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:02:06 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/27 11:31:43 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:52:19 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void	camera_upd_view(t_camera *c)
 	c->vertical = vec_mul_nb(v, c->viewport_height);
 	tmp = vec_sub(c->origin, vec_div(c->horizontal, 2));
 	tmp = vec_add(tmp, vec_div(c->vertical, 2));
-	c->upper_left_corner = vec_sub(tmp, vec_mul_nb(c->dir, c->focal_length));
+	c->upper_left_corner = vec_add(tmp, vec_mul_nb(c->dir, c->focal_length));
 }
