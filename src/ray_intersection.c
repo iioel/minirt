@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/27 01:31:22 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/27 14:20:38 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 int	plane_inter(t_object *o, t_ray *r)
 {
-	t_plane		*pl;
-	double 		g;
+	t_plane	*pl;
+	double		t;
+	t_vector	d;
+	t_vector	D;
 
-	g = 0.;
 	pl = (t_plane *)o;
-	if (pl->vect.x != 0.)
-		g = (pl->point.x - r->origin.x) / r->dir.x;
-	else if (pl->vect.y != 0.)
-		g = (pl->point.y - r->origin.y) / r->dir.y;
-	else if (pl->vect.z != 0.)
-		g = (pl->point.z - r->origin.z) / r->dir.z;
+	d = vec_sub(vec_mul(pl->vect, pl->point), vec_mul(pl->vect, r->origin));
+	D = vec_mul(pl->vect, r->dir);
+	t = (d.x + d.y + d.z) / (D.x + D.y + D.z);
 
-	return (g > 0.);
+	return (t < 0.);
 }
 
 int	sphere_inter(t_object *o, t_ray *r)
