@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:20:51 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:54:31 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/27 09:49:39 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define KEY_ESC 53
 # define KEY_UP 126
 # define KEY_DOWN 125
-# define KEY_LEFT 5000
-# define KEY_RIGHT 5000
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
