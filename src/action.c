@@ -6,7 +6,7 @@
 /*   By: yoel <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:51:55 by yoel              #+#    #+#             */
-/*   Updated: 2022/09/26 19:16:49 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/27 14:02:28 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	move(t_window *w, int dir)
 		w->camera->origin = vec_sub(w->camera->origin, vright);
 	camera_upd_view(w->camera);
 	render(w);
+	printf("P: %f %f %f\n", w->camera->origin.x, w->camera->origin.y, w->camera->origin.z);
 }
 
 void	look(t_window *w, int dir)
