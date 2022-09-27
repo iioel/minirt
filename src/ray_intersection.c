@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:42:07 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/27 01:31:22 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 int	plane_inter(t_object *o, t_ray *r)
 {
 	t_plane		*pl;
+	double 		g;
 
+	g = 0.;
 	pl = (t_plane *)o;
-	return (vec_dot(r->dir, pl->vect) != 0);
+	if (pl->vect.x != 0.)
+		g = (pl->point.x - r->origin.x) / r->dir.x;
+	else if (pl->vect.y != 0.)
+		g = (pl->point.y - r->origin.y) / r->dir.y;
+	else if (pl->vect.z != 0.)
+		g = (pl->point.z - r->origin.z) / r->dir.z;
+
+	return (g > 0.);
 }
 
 int	sphere_inter(t_object *o, t_ray *r)

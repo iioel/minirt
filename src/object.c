@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:28:32 by yoel             ###   ########.fr       */
+/*   Updated: 2022/09/27 00:49:27 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	*new_plane(char *str)
 		&(p->point.y), &(p->point.z), &(p->vect.x), &(p->vect.y),
 		&(p->vect.z), &(p->color.r), &(p->color.g), &(p->color.b));
 	p->type = get_type(stype);
-	p->intercept = NULL;
+	p->intercept = &plane_inter;
 	free(stype);
 	return (p);
 }
