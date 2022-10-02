@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:02:06 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/27 16:52:19 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:20:35 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,6 @@
 #include "object.h"
 #include "vector.h"
 #include "camera.h"
-
-t_camera	*get_camera(t_list *lst)
-{
-	while (lst)
-	{
-		if (((t_object *)lst->content)->type == camera)
-			return (lst->content);
-		lst = lst->next;
-	}
-	return (NULL);
-}
 
 void	camera_init(t_camera *c, double a_r)
 {

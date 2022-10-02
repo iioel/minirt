@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 15:18:56 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 20:20:17 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 # include "object.h"
 # include "ray.h"
 
-typedef struct s_camera	t_camera;
-typedef enum e_type		t_type;
-typedef struct s_object	t_object;
-typedef struct s_ray	t_ray;
-typedef struct s_color	t_color;
+typedef struct s_camera		t_camera;
+typedef struct s_ambient	t_ambient;
+typedef enum e_type			t_type;
+typedef struct s_object		t_object;
+typedef struct s_ray		t_ray;
+typedef struct s_color		t_color;
 
 typedef struct s_window
 {
@@ -40,6 +41,7 @@ typedef struct s_window
 	int			height;
 	t_list		*objs;
 	t_camera	*camera;
+	t_ambient	*ambient;
 }				t_window;
 
 typedef struct s_img

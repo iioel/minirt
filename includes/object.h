@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 15:23:42 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:24:59 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ typedef struct s_cylinder
 	double		diameter;
 	double		height;
 }				t_cylinder;
+
+t_object	*get_obj(t_type type, t_list *lst);
 
 #endif

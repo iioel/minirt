@@ -6,11 +6,22 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 15:44:38 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 20:25:48 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_object	*get_obj(t_type type, t_list *lst)
+{
+	while (lst)
+	{
+		if (((t_object *)lst->content)->type == type)
+			return (lst->content);
+		lst = lst->next;
+	}
+	return (NULL);
+}
 
 void	*new_light(char *str)
 {
