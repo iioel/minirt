@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/27 00:49:27 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/02 15:44:38 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*new_sphere(char *str)
 	s = ft_calloc(1, sizeof(t_sphere));
 	if (!s)
 		return (NULL);
-	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f %i", &stype, &(s->point.x),
+	ft_sscanf(str, "%s %f,%f,%f %f #%2x%2x%2x", &stype, &(s->point.x),
 		&(s->point.y), &(s->point.z), &(s->diameter), &(s->color.r),
 		&(s->color.g), &(s->color.b));
 	s->type = get_type(stype);
