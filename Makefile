@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/09/26 18:18:00 by yoel             ###   ########.fr        #
+#    Updated: 2022/10/02 15:27:26 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,9 @@ endif
 
 all: $(NAME)
 
+fast: CFLAGS += -Ofast
+fast: $(NAME)
+
 debug: LFLAGS += $(DEBUG_LFLAGS)
 debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: $(NAME)
@@ -121,4 +124,4 @@ fclean: mlx_clean
 
 re: fclean all
 
-.PHONY : all mlx mlx_clean debug clean fclean re
+.PHONY : all mlx mlx_clean fast debug clean fclean re
