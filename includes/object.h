@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:25:41 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/02 15:23:42 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 # include "ray.h"
 # include "minirt.h"
 
+# define A 0
+# define B 1
+# define C 2
+# define DESC 3
+
 typedef struct s_ray		t_ray;
 
 typedef struct s_object		t_object;
 
-typedef int					(*t_intercept)	(t_object *, t_ray *);
+typedef double				(*t_intercept)	(t_object *, t_ray *);
 
 typedef enum e_type
 {
