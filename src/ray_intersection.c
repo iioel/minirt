@@ -6,12 +6,13 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 20:26:12 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 22:57:02 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <float.h>
 #include "minirt.h"
-#include "float.h"
+#include "light.h"
 
 double	plane_inter(t_object *o, t_ray *r)
 {
@@ -60,7 +61,9 @@ int	get_ray_color(t_ray ray, t_color *color, t_list *lst)
 	double		nearest;
 	t_object	*nearest_obj;
 	t_ambient	*a;
+	t_list		*lstb;
 
+	lstb = lst;
 	a = (t_ambient *)get_obj(ambient, lst);
 	nearest = DBL_MAX;
 	nearest_obj = NULL;
@@ -78,6 +81,9 @@ int	get_ray_color(t_ray ray, t_color *color, t_list *lst)
 		lst = lst->next;
 	}
 	if (nearest_obj)
+	{
 		*color = compute_ambiant(a, nearest_obj->color);
+		*color = compute_lights(*color, nearest_obj, ray, nearest, lstb);
+	}
 	return (nearest_obj == NULL);
 }
