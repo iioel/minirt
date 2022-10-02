@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 18:08:29 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/02 15:18:56 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		*new_plane(char *str);
 void		*new_cylinder(char *str);
 
 // ray_intersect.c
-int			sphere_inter(t_object *o, t_ray *r);
-int			plane_inter(t_object *o, t_ray *r);
+double		sphere_inter(t_object *o, t_ray *r);
+double		plane_inter(t_object *o, t_ray *r);
 int			get_ray_color(t_ray ray, t_color *color, t_list *lst);
 #endif
