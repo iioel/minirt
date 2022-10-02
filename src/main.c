@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 18:07:35 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/02 20:03:41 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,9 @@ int	main(int argc, char **argv)
 		printf("Please provide a config file !!!\nExiting...\n");
 		exit(1);
 	}
-	w->camera = get_camera(w->objs);
+	w->camera = (t_camera *)get_obj(camera, w->objs);
 	camera_init(w->camera, 16. / 9.);
+	w->ambient = (t_ambient *)get_obj(ambient, w->objs);
 	printf("Windows size x: %d y: %d \n", w->width, w->height);
 	save_window(w);
 	little_test(w);
