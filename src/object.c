@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 20:25:48 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 23:05:08 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*new_light(char *str)
 	l = ft_calloc(1, sizeof(t_light));
 	if (!l)
 		return (NULL);
-	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f %i", &stype, &(l->point.x),
+	ft_sscanf(str, "%s %f,%f,%f %f #%2x%2x%2x", &stype, &(l->point.x),
 		&(l->point.y), &(l->point.z), &(l->brightness), &(l->color.r),
 		&(l->color.g), &(l->color.b));
 	l->type = get_type(stype);
