@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 15:30:38 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/02 17:03:36 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	sphere_inter(t_object *o, t_ray *r)
 	eq[A] = vec_dot(r->dir, r->dir);
 	eq[B] = 2.0 * vec_dot(oc, r->dir);
 	eq[C] = vec_dot(oc, oc) - ((sp->diameter / 2) * sp->diameter / 2);
-	eq[DESC] = pow(eq[B], 2) - 4 * eq[A] * eq[C];
+	eq[DESC] = (eq[B] * eq[B]) - 4 * eq[A] * eq[C];
 	if (eq[DESC] == 0)
 		t1 = -(eq[B] / (2 * eq[A]));
 	else if (eq[DESC] > 0)
