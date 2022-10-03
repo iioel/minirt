@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:53:37 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:54:44 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:31:17 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,31 @@ t_color	color_init(char r, char g, char b)
 	c.g = g;
 	c.b = b;
 	return (c);
+}
+
+t_color	color_add(t_color c1, t_color c2)
+{
+	c1.r = c1.r + c2.r;
+	c1.g = c1.g + c2.g;
+	c1.b = c1.b + c2.b;
+	if (c1.r > 255)
+		c1.r = 255;
+	if (c1.g > 255)
+		c1.g = 255;
+	if (c1.b > 255)
+		c1.b = 255;
+	return (c1);
+}
+
+t_color	color_max(t_color c1, t_color c2)
+{
+	if (c1.r < c2.r)
+		c1.r = c2.r;
+	if (c1.g < c2.g)
+		c1.g = c2.g;
+	if (c1.b < c2.b)
+		c1.b = c2.b;
+	return (c1);
 }
 
 int	color2int(t_color c)

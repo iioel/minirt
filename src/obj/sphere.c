@@ -6,11 +6,12 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:14:52 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 16:09:22 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:31:20 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "obj/sphere.h"
+#include "ft_math.h"
 
 void	*new_sphere(char *str)
 {
@@ -25,6 +26,7 @@ void	*new_sphere(char *str)
 		&(s->color.g), &(s->color.b));
 	s->type = get_type(stype);
 	s->intercept = &sphere_inter;
+	s->get_normal = &sphere_get_normal;
 	free(stype);
 	return (s);
 }
@@ -54,4 +56,12 @@ double	sphere_inter(t_object *o, t_ray *r)
 			return (t2);
 	}
 	return (t1);
+}
+
+t_vector	sphere_get_normal(t_object *o, t_point p)
+{
+	t_sphere	*sp;
+
+	sp = (t_sphere *)o;
+	return (vec_sub(p, sp->point));
 }

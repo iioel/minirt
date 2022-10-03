@@ -6,7 +6,7 @@
 #    By: yalthaus <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 01:48:48 by yalthaus          #+#    #+#              #
-#    Updated: 2022/07/17 12:16:59 by yalthaus         ###   ########.fr        #
+#    Updated: 2022/10/03 18:49:38 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME 	= libft.a
 
 #compiler option
 CC 		= gcc
-CFLAGS 	= -Wall -Werror -Wextra
+CFLAGS 	= -Wall -Werror -Wextra -Ofast
 HEADS	= -I$(INC)
 
 #src

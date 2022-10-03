@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 16:13:42 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:23:43 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@
 # include "ray.h"
 //# include "minirt.h"
 
-# define A 0
-# define B 1
-# define C 2
-# define DESC 3
-
 typedef struct s_object		t_object;
 
 typedef double				(*t_intercept)	(t_object *, t_ray *);
+typedef t_vector			(*t_get_normal)	(t_object *, t_point);
 
 typedef enum e_type
 {
@@ -41,9 +37,10 @@ typedef enum e_type
 
 struct s_object
 {
-	t_type		type;
-	t_intercept	intercept;
-	t_color		color;
+	t_type			type;
+	t_intercept		intercept;
+	t_get_normal	get_normal;
+	t_color			color;
 };
 
 t_type		get_type(char *str);

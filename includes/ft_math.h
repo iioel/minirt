@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder.h                                         :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 15:29:01 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:07:45 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 18:14:08 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 18:15:15 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CYLINDER_H
-# define CYLINDER_H
+#ifndef FT_MATH_H
+# define FT_MATH_H
 
-# include "obj/object.h"
+# define A 0
+# define B 1
+# define C 2
+# define DESC 3
 
-typedef struct s_cylinder
-{
-	t_type			type;
-	t_intercept		intercept;
-	t_get_normal	get_normal;
-	t_color			color;
-	t_point			point;
-	t_vector		vect;
-	double			diameter;
-	double			height;
-}				t_cylinder;
-
-void		*new_cylinder(char *str);
+int	max(int m1, int m2);
+int	min(int m1, int m2);
 
 #endif

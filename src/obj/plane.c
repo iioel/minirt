@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:18:33 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 16:09:13 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:31:12 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	*new_plane(char *str)
 		&(p->vect.z), &(p->color.r), &(p->color.g), &(p->color.b));
 	p->type = get_type(stype);
 	p->intercept = &plane_inter;
+	p->get_normal = &plane_get_normal;
 	free(stype);
 	return (p);
 }
@@ -41,4 +42,13 @@ double	plane_inter(t_object *o, t_ray *r)
 	e = vec_mul(pl->vect, r->dir);
 	t = (d.x + d.y + d.z) / (e.x + e.y + e.z);
 	return (t);
+}
+
+t_vector	plane_get_normal(t_object *o, t_point p)
+{
+	t_plane		*pl;
+
+	(void)p;
+	pl = (t_plane *)o;
+	return (pl->vect);
 }
