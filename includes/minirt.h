@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 20:20:17 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:12:51 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,10 @@
 
 # include "keys.h"
 # include "mouse.h"
-# include "object.h"
-# include "ray.h"
+# include "objects.h"
 
-typedef struct s_camera		t_camera;
-typedef struct s_ambient	t_ambient;
 typedef enum e_type			t_type;
 typedef struct s_object		t_object;
-typedef struct s_ray		t_ray;
 typedef struct s_color		t_color;
 
 typedef struct s_window
@@ -85,18 +81,4 @@ void		mlx_pixel_put_img(t_img *img, int x, int y, unsigned int color);
 // gnl.c
 char		*get_next_line(int fd);
 
-// parsing.c
-t_type		get_type(char *str);
-t_list		*parsing(char *file);
-
-// object.c
-void		*new_light(char *str);
-void		*new_sphere(char *str);
-void		*new_plane(char *str);
-void		*new_cylinder(char *str);
-
-// ray_intersect.c
-double		sphere_inter(t_object *o, t_ray *r);
-double		plane_inter(t_object *o, t_ray *r);
-int			get_ray_color(t_ray ray, t_color *color, t_list *lst);
 #endif

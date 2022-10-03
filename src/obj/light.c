@@ -6,11 +6,30 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 20:57:20 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:12:31 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:56:20 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "light.h"
+#include "obj/light.h"
+#include "obj/object.h"
+#include "obj/sphere.h"
+
+void	*new_light(char *str)
+{
+	t_light	*l;
+	char	*stype;
+
+	l = ft_calloc(1, sizeof(t_light));
+	if (!l)
+		return (NULL);
+	ft_sscanf(str, "%s %f,%f,%f %f #%2x%2x%2x", &stype, &(l->point.x),
+		&(l->point.y), &(l->point.z), &(l->brightness), &(l->color.r),
+		&(l->color.g), &(l->color.b));
+	l->type = get_type(stype);
+	l->intercept = NULL;
+	free(stype);
+	return (l);
+}
 
 t_color	compute_lights(t_color c, t_object *o, t_ray ray, double d, t_list *lst)
 {

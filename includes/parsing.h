@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.h                                           :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoel <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 18:09:16 by yoel              #+#    #+#             */
-/*   Updated: 2022/10/03 16:06:49 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 15:47:44 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 16:09:41 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ACTION_H
-# define ACTION_H
+#ifndef PARSING_H
+# define PARSING_H
 
-# include "minirt.h"
-# include "vector.h"
+# include "objects.h"
 
-# define FW 0
-# define BACK 1
-# define UP 0
-# define DOWN 1
-# define LEFT 2
-# define RIGHT 3
+t_type		get_type(char *str);
+t_list		*parsing(char *file);
 
-void	move(t_window *w, int dir);
-void	look(t_window *w, int dir);
 #endif

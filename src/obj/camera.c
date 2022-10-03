@@ -6,14 +6,30 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:02:06 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 19:20:35 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:40:10 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "object.h"
+#include "obj/camera.h"
 #include "vector.h"
-#include "camera.h"
+
+void	*new_camera(char *str)
+{
+	t_camera	*c;
+	char		*stype;
+
+	c = ft_calloc(1, sizeof(t_camera));
+	if (!c)
+		return (NULL);
+	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f %i", &stype, &(c->origin.x),
+		&(c->origin.y), &(c->origin.z), &(c->dir.x), &(c->dir.y),
+		&(c->dir.z), &(c->fov));
+	c->type = get_type(stype);
+	free(stype);
+	c->intercept = NULL;
+	return (c);
+}
 
 void	camera_init(t_camera *c, double a_r)
 {

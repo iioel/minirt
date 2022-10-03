@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   cylinder.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 12:53:37 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:54:44 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 15:29:01 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 16:15:15 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#ifndef CYLINDER_H
+# define CYLINDER_H
 
-t_color	color_init(char r, char g, char b)
+# include "obj/object.h"
+
+typedef struct s_cylinder
 {
-	t_color	c;
+	t_type		type;
+	t_intercept	intercept;
+	t_color		color;
+	t_point		point;
+	t_vector	vect;
+	double		diameter;
+	double		height;
+}				t_cylinder;
 
-	c.r = r;
-	c.g = g;
-	c.b = b;
-	return (c);
-}
+void		*new_cylinder(char *str);
 
-int	color2int(t_color c)
-{
-	return ((c.r << 16) + (c.g << 8) + c.b);
-}
+#endif
