@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.h                                           :+:      :+:    :+:   */
+/*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoel <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 18:09:16 by yoel              #+#    #+#             */
-/*   Updated: 2022/10/03 16:06:49 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 16:01:01 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 16:05:18 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ACTION_H
-# define ACTION_H
+#ifndef OBJECTS_H
+# define OBJECTS_H
 
-# include "minirt.h"
-# include "vector.h"
+# include "obj/object.h"
 
-# define FW 0
-# define BACK 1
-# define UP 0
-# define DOWN 1
-# define LEFT 2
-# define RIGHT 3
+# include "obj/ambient.h"
+# include "obj/camera.h"
+# include "obj/cylinder.h"
+# include "obj/light.h"
+# include "obj/plane.h"
+# include "obj/sphere.h"
 
-void	move(t_window *w, int dir);
-void	look(t_window *w, int dir);
 #endif

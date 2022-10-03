@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   plane.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 12:53:37 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:54:44 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 15:27:43 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 16:03:35 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#ifndef PLANE_H
+# define PLANE_H
 
-t_color	color_init(char r, char g, char b)
+# include "obj/object.h"
+
+typedef struct s_plane
 {
-	t_color	c;
+	t_type		type;
+	t_intercept	intercept;
+	t_color		color;
+	t_point		point;
+	t_vector	vect;
+}				t_plane;
 
-	c.r = r;
-	c.g = g;
-	c.b = b;
-	return (c);
-}
+void		*new_plane(char *str);
+double		plane_inter(t_object *o, t_ray *r);
 
-int	color2int(t_color c)
-{
-	return ((c.r << 16) + (c.g << 8) + c.b);
-}
+#endif

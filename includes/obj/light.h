@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 12:53:37 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:54:44 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/02 22:42:24 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 15:43:41 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#ifndef LIGHT_H
+# define LIGHT_H
 
-t_color	color_init(char r, char g, char b)
+# include "object.h"
+# include "ray.h"
+
+typedef struct s_light
 {
-	t_color	c;
+	t_type		type;
+	t_intercept	intercept;
+	t_color		color;
+	t_point		point;
+	double		brightness;
+}				t_light;
 
-	c.r = r;
-	c.g = g;
-	c.b = b;
-	return (c);
-}
+void	*new_light(char *str);
+t_color	compute_lights(t_color c, t_object *o, t_ray ray, double d, t_list *lst);
 
-int	color2int(t_color c)
-{
-	return ((c.r << 16) + (c.g << 8) + c.b);
-}
+#endif

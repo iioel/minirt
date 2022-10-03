@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/10/02 22:44:14 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/10/03 15:45:56 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,19 @@ NAME = minirt
 
 SRCS = main.c \
 	   ray.c \
-	   camera.c \
-	   light.c \
 	   clean.c \
 	   window.c \
 	   gnl.c \
 	   parsing.c \
-	   object.c \
 	   color.c \
 	   action.c \
+	   obj/ambient.c \
+	   obj/camera.c \
+	   obj/cylinder.c \
+	   obj/light.c \
+	   obj/object.c \
+	   obj/plane.c \
+	   obj/sphere.c \
 	   vector/vector_1.c \
 	   vector/vector_2.c \
 	   vector/vector_3.c \
@@ -36,7 +40,7 @@ SRCS_DIR = src
 OBJS = $(SRCS:.c=.o)
 OBJS_DIR = obj
 
-DIRS = obj obj/vector obj/mlx_tools
+DIRS = obj obj/vector obj/mlx_tools obj/obj
 
 _SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS))
 _OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.h                                            :+:      :+:    :+:   */
+/*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 22:42:24 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 22:45:30 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 15:26:31 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 16:03:50 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#ifndef SPHERE_H
+# define SPHERE_H
 
-#ifndef LIGHT_H
-# define LIGHT_H
+# include "obj/object.h"
 
-t_color	compute_lights(t_color c, t_object *o, t_ray ray, double d, t_list *lst);
+typedef struct s_sphere
+{
+	t_type		type;
+	t_intercept	intercept;
+	t_color		color;
+	t_point		point;
+	double		diameter;
+}				t_sphere;
+
+void		*new_sphere(char *str);
+double		sphere_inter(t_object *o, t_ray *r);
 
 #endif

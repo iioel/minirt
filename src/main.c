@@ -6,13 +6,14 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/02 20:03:41 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:49:35 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "camera.h"
+#include "obj/camera.h"
 #include "ray.h"
+#include "parsing.h"
 
 static void	little_test(t_window *w)
 {
