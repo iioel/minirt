@@ -1,15 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_intersection.c                                 :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 16:11:47 by ycornamu         ###   ########.fr       */
+/*   Created: 2022/10/03 18:11:23 by ycornamu          #+#    #+#             */
+/*   Updated: 2022/10/03 18:19:15 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "objects.h"
+#include "ft_math.h"
 
+int	max(int m1, int m2)
+{
+	if (m1 < m2)
+		return (m2);
+	return (m1);
+}
+
+int	min(int m1, int m2)
+{
+	if (m1 > m2)
+		return (m2);
+	return (m1);
+}

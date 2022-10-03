@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/10/03 15:45:56 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/10/03 22:54:23 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME = minirt
 
 SRCS = main.c \
 	   ray.c \
+	   ray_utils.c \
 	   clean.c \
 	   window.c \
 	   gnl.c \
 	   parsing.c \
 	   color.c \
 	   action.c \
+	   ft_math.c \
 	   obj/ambient.c \
 	   obj/camera.c \
 	   obj/cylinder.c \
@@ -33,8 +35,7 @@ SRCS = main.c \
 	   mlx_tools/catch_win.c \
 	   mlx_tools/catch_key.c \
 	   mlx_tools/catch_mouse.c \
-	   mlx_tools/mlx_utils.c \
-	   ray_intersection.c
+	   mlx_tools/mlx_utils.c
 SRCS_DIR = src
 
 OBJS = $(SRCS:.c=.o)

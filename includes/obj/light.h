@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 22:42:24 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:43:41 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:08:07 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 
 typedef struct s_light
 {
-	t_type		type;
-	t_intercept	intercept;
-	t_color		color;
-	t_point		point;
-	double		brightness;
+	t_type			type;
+	t_intercept		intercept;
+	t_get_normal	get_normal;
+	t_color			color;
+	t_point			point;
+	double			brightness;
 }				t_light;
 
 void	*new_light(char *str);
-t_color	compute_lights(t_color c, t_object *o, t_ray ray, double d, t_list *lst);
+t_color	compute_lights(t_object *o, t_ray ray, double d, t_list *lst);
 
 #endif

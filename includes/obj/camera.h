@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:12:06 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:42:57 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:07:25 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_camera
 {
 	t_type			type;
 	t_intercept		intercept;
+	t_get_normal	get_normal;
 	t_color			color;
 	t_point			origin;
 	t_vector		dir;
