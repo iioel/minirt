@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 22:56:03 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:18:24 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,6 @@
 #include "obj/camera.h"
 #include "ray.h"
 #include "parsing.h"
-
-static void	little_test(t_window *w)
-{
-	int		x;
-	int		y;
-	t_img	*img;
-
-	img = create_image(w);
-	y = 0;
-	while (y < w->height)
-	{
-		x = 0;
-		while (x < w->width)
-			mlx_pixel_put_img(img, x++, y, 0x0000FFFF);
-		y++;
-	}
-	display_image(w, img);
-}
 
 void	render(t_window *w)
 {
@@ -86,7 +68,6 @@ int	main(int argc, char **argv)
 	w->ambient = (t_ambient *)get_obj(ambient, w->objs);
 	printf("Windows size x: %d y: %d \n", w->width, w->height);
 	save_window(w);
-	little_test(w);
 	render(w);
 	define_hooks(w);
 	mlx_do_key_autorepeaton(w->mlx);
