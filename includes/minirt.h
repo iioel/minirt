@@ -38,6 +38,7 @@ typedef struct s_window
 	double		aspect_ratio;
 	int			width;
 	int			height;
+	t_object	*selected_obj;
 	t_list		*objs;
 	t_camera	*camera;
 	t_ambient	*ambient;
@@ -56,6 +57,7 @@ typedef struct s_img
 
 // main.c
 int			render(t_window *w);
+void		define_hooks(t_window *w);
 
 // clean.c
 void		*clean(void *p);
@@ -72,7 +74,7 @@ int			catch_exit(int t, t_window *w);
 int			catch_key(int t, t_window *w);
 
 // catch_mouse.c
-int			catch_button_press(int t, t_window *w);
+int			catch_button_press(int t, int x, int y, t_window *w);
 int			catch_button_release(int t, t_window *w);
 int			catch_mouse_moves(int x, int y, t_window *w);
 
@@ -83,5 +85,8 @@ void		mlx_pixel_put_img(t_img *img, int x, int y, unsigned int color);
 
 // gnl.c
 char		*get_next_line(int fd);
+
+// object_mod.c
+void 		select_obj(t_window *w, int x, int y);
 
 #endif

@@ -29,6 +29,7 @@
 # define KEY_Z 6
 # define KEY_I 34
 # define KEY_P 35
+# define KEY_ENTER 36
 
 # define KEY_ESC_LNX 65307
 # define KEY_UP_LNX 65362

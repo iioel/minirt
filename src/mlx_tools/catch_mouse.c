@@ -12,12 +12,12 @@
 
 #include "minirt.h"
 
-int	catch_button_press(int t, t_window *w)
+int	catch_button_press(int t, int x, int y, t_window *w)
 {
+	printf("x %i\ty %i\n", x, y);
 	w = save_window(NULL);
-	(void)w;
 	if (t == MOUSE_L)
-		printf("Mouse button LEFT pressed ...\n");
+		select_obj(w, x, y);
 	else if (t == MOUSE_R)
 		printf("Mouse button RIGHT pressed ...\n");
 	else if (t == MOUSE_M)
