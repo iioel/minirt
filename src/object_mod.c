@@ -29,7 +29,7 @@ void select_obj(t_window *w, int x, int y)
 {
 	t_ray		r;
 
-	printf("ICI\n");
+	w->rd_i = 1;
 	r = pix2ray(w, x, y);
 	printf("ICI2\n");
 	get_nearest_obj(&(w->selected_obj), r, w->objs);
