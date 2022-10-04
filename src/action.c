@@ -6,7 +6,7 @@
 /*   By: yoel <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:51:55 by yoel              #+#    #+#             */
-/*   Updated: 2022/10/03 22:34:47 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:27:26 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ void	look(t_window *w, int dir)
 {
 	double	vstep_angle;
 	double	hstep_angle;
-	double	vertical_angle;
 
 	vstep_angle = 5. * M_PI / 180;
 	hstep_angle = 5. * M_PI / 180;
-	vertical_angle = acos(w->camera->dir.y);
 	if (dir == UP && (w->camera->dir.y + sin(vstep_angle) <= 1.))
 		w->camera->dir.y = w->camera->dir.y + sin(vstep_angle);
 	else if (dir == DOWN && (w->camera->dir.y - sin(vstep_angle) >= -1.))
