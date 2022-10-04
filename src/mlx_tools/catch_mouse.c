@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:55:21 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/26 15:28:53 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/04 00:23:43 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	catch_button_press(int t, t_window *w)
 {
 	w = save_window(NULL);
+	(void)w;
 	if (t == MOUSE_L)
 		printf("Mouse button LEFT pressed ...\n");
 	else if (t == MOUSE_R)
@@ -31,6 +32,7 @@ int	catch_button_press(int t, t_window *w)
 int	catch_button_release(int t, t_window *w)
 {
 	w = save_window(NULL);
+	(void)w;
 	if (t == MOUSE_L)
 		printf("Mouse button LEFT released ...\n");
 	else if (t == MOUSE_R)
@@ -43,6 +45,7 @@ int	catch_button_release(int t, t_window *w)
 int	catch_mouse_moves(int x, int y, t_window *w)
 {
 	w = save_window(NULL);
+	(void)w;
 	(void)x;
 	(void)y;
 	return (0);
