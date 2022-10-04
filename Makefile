@@ -35,7 +35,8 @@ SRCS = main.c \
 	   mlx_tools/catch_win.c \
 	   mlx_tools/catch_key.c \
 	   mlx_tools/catch_mouse.c \
-	   mlx_tools/mlx_utils.c
+	   mlx_tools/mlx_utils.c\
+	   object_mod.c
 SRCS_DIR = src
 
 OBJS = $(SRCS:.c=.o)

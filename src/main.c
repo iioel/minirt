@@ -60,7 +60,7 @@ int	render(t_window *w)
 	return (0);
 }
 
-static void	define_hooks(t_window *w)
+void	define_hooks(t_window *w)
 {
 	mlx_hook(w->w, 2, (1L << 0), catch_key, w);
 	mlx_hook(w->w, 17, (1L << 0), catch_exit, w);
