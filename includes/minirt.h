@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 17:35:29 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/04 04:52:06 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "mouse.h"
 # include "objects.h"
 
+# define RENDER_STEPS 15
+
 typedef enum e_type			t_type;
 typedef struct s_object		t_object;
 typedef struct s_color		t_color;
@@ -32,6 +34,7 @@ typedef struct s_window
 {
 	void		*mlx;
 	void		*w;
+	int			rd_i;
 	double		aspect_ratio;
 	int			width;
 	int			height;
@@ -52,7 +55,7 @@ typedef struct s_img
 }				t_img;
 
 // main.c
-void		render(t_window *w);
+int			render(t_window *w);
 
 // clean.c
 void		*clean(void *p);

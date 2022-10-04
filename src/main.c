@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 00:18:24 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/04 13:37:58 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,50 @@
 #include "obj/camera.h"
 #include "ray.h"
 #include "parsing.h"
+#include <unistd.h>
 
-void	render(t_window *w)
+int	render_bis(t_window *w, t_img *img)
 {
 	int		x;
 	int		y;
 	t_ray	ray;
-	t_img	*img;
 	t_color	color;
 
-	img = create_image(w);
 	y = 0;
 	while (y < w->height)
 	{
 		x = 0;
 		while (x < w->width)
 		{
-			ray = pix2ray(w, x, y);
-			ray_color(ray, &color, w->objs);
+			if (x == 0 || (x / w->rd_i) != ((x - 1) / w->rd_i))
+			{
+				ray = pix2ray(w, x, y);
+				ray_color(ray, &color, w->objs);
+			}
 			mlx_pixel_put_img(img, x++, y, color2int(color));
 		}
 		y++;
 	}
+	return (0);
+}
+
+int	render(t_window *w)
+{
+	t_img	*img;
+
+	if (w->rd_i == 0)
+	{
+		usleep(2000);
+		return (1);
+	}
+	img = create_image(w);
+	render_bis(w, img);
 	display_image(w, img);
 	mlx_destroy_image(w->mlx, img->img);
 	free(img);
+	if (w->rd_i >= 1)
+		w->rd_i--;
+	return (0);
 }
 
 static void	define_hooks(t_window *w)
@@ -56,6 +75,7 @@ int	main(int argc, char **argv)
 	t_window	*w;
 
 	w = create_win(900, 16. / 9., "Minirt");
+	w->rd_i = RENDER_STEPS;
 	if (! w)
 		exit(1);
 	if (argc == 2)
@@ -73,5 +93,6 @@ int	main(int argc, char **argv)
 	render(w);
 	define_hooks(w);
 	mlx_do_key_autorepeaton(w->mlx);
+	mlx_loop_hook(w->mlx, render, w);
 	mlx_loop(w->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: yoel <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:51:55 by yoel              #+#    #+#             */
-/*   Updated: 2022/10/04 00:27:26 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/04 04:37:57 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move(t_window *w, int dir)
 	else if (dir == RIGHT)
 		w->camera->origin = vec_add(w->camera->origin, vright);
 	camera_upd_view(w->camera);
-	render(w);
+	w->rd_i = RENDER_STEPS;
 }
 
 t_vector	turn(t_vector v, t_vector axis, double angle)
@@ -67,5 +67,5 @@ void	look(t_window *w, int dir)
 		w->camera->dir = turn(w->camera->dir, vec_init(0, 1, 0), hstep_angle);
 	w->camera->dir = vec_unit(w->camera->dir);
 	camera_upd_view(w->camera);
-	render(w);
+	w->rd_i = RENDER_STEPS;
 }
