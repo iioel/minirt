@@ -37,6 +37,8 @@ void	render(t_window *w)
 		y++;
 	}
 	display_image(w, img);
+	mlx_destroy_image(w->mlx, img->img);
+	free(img);
 }
 
 static void	define_hooks(t_window *w)
