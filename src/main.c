@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 13:37:58 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:17:43 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	render(t_window *w)
 	if (w->rd_i == 0)
 	{
 		usleep(2000);
-		return (1);
+		return (0);
 	}
 	img = create_image(w);
 	render_bis(w, img);

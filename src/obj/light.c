@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 20:57:20 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 23:30:58 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:50:53 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ t_color	add_light_color(t_light *l, double m, t_object *o, t_color c)
 {
 	t_color	c_temp;
 
-	c_temp = color_init(
-			(l->color.r * m * l->brightness) / 255. * o->color.r,
-			(l->color.g * m * l->brightness) / 255. * o->color.g,
-			(l->color.b * m * l->brightness) / 255. * o->color.b);
+	c_temp = color_cap(color_init(
+			((l->color.r / 255.) * m * l->brightness) * o->color.r,
+			((l->color.g / 255.) * m * l->brightness) * o->color.g,
+			((l->color.b / 255.) * m * l->brightness) * o->color.b));
 	c = color_add(c, c_temp);
 	return (c);
 }
@@ -48,18 +48,20 @@ double	get_light_mag(t_point hit, t_vector n, t_light *l, t_list *lst)
 {
 	t_vector	light_ray_dir;
 	t_object	*obj;
+	double		d;
 	double		r;
 
 	light_ray_dir = vec_unit(vec_sub(l->point, hit));
-	r = get_nearest_obj(&obj,
+	d = get_nearest_obj(&obj,
 			ray_init(l->point, vec_mul_nb(light_ray_dir, -1.)),
 			lst);
 	if (round(vec_length_squared(vec_sub(l->point, hit)))
-		== round(vec_length_squared(vec_mul_nb(light_ray_dir, r))))
+		== round(vec_length_squared(vec_mul_nb(light_ray_dir, d))))
 	{
 		r = vec_dot(n, light_ray_dir);
 		if (r < 0. || vec_dot(n, light_ray_dir) < 0)
 			r = 0.;
+		r = r * (1 / (d * d));
 		return (r);
 	}
 	return (-1.);

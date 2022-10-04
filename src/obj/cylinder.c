@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:35 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 06:32:08 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/05 01:37:37 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ double	cylinder_inter(t_object *o, t_ray *r)
 //	tmp = vec_sub(c->origin, vec_div(c->horizontal, 2));
 //	tmp = vec_add(tmp, vec_div(c->vertical, 2));
 //	c->upper_left_corner = vec_add(tmp, vec_mul_nb(c->dir, c->focal_length));
+	t_ray		rb;
 	t_vector	oc;
 	t_cylinder	*c;
 	double		eq[4];
@@ -56,10 +57,12 @@ double	cylinder_inter(t_object *o, t_ray *r)
 
 	t1 = -1;
 	c = (t_cylinder *)o;
+	rb.origin = r->origin;
+	rb.dir = vec_cross(r->dir, c->vect);
 	oc = vec_sub(r->origin, c->point);
-	eq[A] = r->dir.x * r->dir.x + r->dir.y * r->dir.y;
-	eq[B] = 2. * (oc.x * r->dir.x + oc.y * r->dir.y);
-	eq[C] = (oc.x * oc.x + oc.y * oc.y - c->diameter);
+	eq[A] = vec_dot(rb.dir, rb.dir);
+	eq[B] = 2. * vec_dot(rb.dir, vec_cross(oc, c->vect));
+	eq[C] = vec_dot(vec_cross(oc, c->vect), vec_cross(oc, c->vect)) - (c->diameter / 2) * (c->diameter / 2);
 	eq[DESC] = (eq[B] * eq[B]) - 4 * eq[A] * eq[C];
 	if (eq[DESC] == 0)
 		t1 = -(eq[B] / (2 * eq[A]));
@@ -78,6 +81,6 @@ t_vector	cylinder_get_normal(t_object *o, t_point p)
 	t_cylinder	*c;
 
 	c = (t_cylinder *)o;
-	return (vec_init(p.x - c->point.x, p.y - c->point.y, c->point.z));
+	return (vec_sub(p, c->point));
 }
 
