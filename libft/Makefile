@@ -16,7 +16,7 @@ NAME 	= libft.a
 
 #compiler option
 CC 		= gcc
-CFLAGS 	= -Wall -Werror -Wextra -Ofast
+CFLAGS 	= -Wall -Werror -Wextra -Ofast -Wno-unused-result
 HEADS	= -I$(INC)
 
 #src
