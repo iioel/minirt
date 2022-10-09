@@ -36,6 +36,7 @@
 # define KEY_DOWN_LNX 65364
 # define KEY_LEFT_LNX 65361
 # define KEY_RIGHT_LNX 65363
+# define KEY_ENTER_LNX 65293
 # define KEY_W_LNX 119
 # define KEY_A_LNX 97
 # define KEY_S_LNX 115

@@ -38,6 +38,8 @@ typedef struct s_window
 	double		aspect_ratio;
 	int			width;
 	int			height;
+	int			x_mouse;
+	int			y_mouse;
 	t_object	*selected_obj;
 	t_list		*objs;
 	t_camera	*camera;
