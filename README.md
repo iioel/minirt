@@ -21,11 +21,27 @@ cd miniRT && make
 
 |   **Cam movement** | Key |
 | -------------------|-----|
-| move right         | "d" |
-| move left          | "a" |
-| move forward       | "w" |
-| move backward      | "s" |
-| look right         | "→" |
-| look left          | "←" |
-| look up            | "↑" |
-| look down          | "↓" |
+| move right         |  D  |
+| move left          |  A  |
+| move forward       |  W  |
+| move backward      |  S  |
+| look right         |  →  |
+| look left          |  ←  |
+| look up            |  ↑  |
+| look down          |  ↓  |
+
+Select an object with **[Mouse Left Click]** to modify him.
+
+|  **object Modify** | Key |
+| -------------------|-----|
+| move right         |  D  |
+| move left          |  A  |
+| move forward       |  W  |
+| move backward      |  S  |
+| move up            |space|
+| move down          |shift|
+| vector mod         |  V  |
+
+To increase the diameter of a sphere or cylinder: use **[Mouse Right Click]** the delta of x between press and release
+
+
