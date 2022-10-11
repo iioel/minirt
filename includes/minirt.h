@@ -89,7 +89,7 @@ void		mlx_pixel_put_img(t_img *img, int x, int y, unsigned int color);
 char		*get_next_line(int fd);
 
 // object_mod.c
-void 		select_obj(t_window *w, int x, int y);
+void		select_obj(t_window *w, int x, int y);
 int			catch_key_obj(int t, t_window *w);
 
 #endif

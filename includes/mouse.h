@@ -19,7 +19,7 @@
 # define MOUSE_DOWN 4
 # define MOUSE_UP 5
 
-# define Mouse_M_LNX 2
+# define MOUSE_M_LNX 2
 # define MOUSE_R_LNX 3
 
 #endif
