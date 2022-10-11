@@ -37,7 +37,6 @@ t_ray	pix2ray(t_window *w, int x, int y)
 	double		u;
 	double		v;
 
-// printf("%i %i %i\n", x, w->rd_i, w->width);
 	u = (double)(x / w->rd_i) / (double)(w->width / w->rd_i);
 	v = (double)(y / w->rd_i) / (double)(w->height / w->rd_i);
 	tmp = vec_add(w->camera->upper_left_corner,
