@@ -12,6 +12,8 @@
 
 #include <math.h>
 #include "obj/camera.h"
+#include "obj/object.h"
+#include "obj/sphere.h"
 #include "vector.h"
 
 void	*new_camera(char *str)
@@ -43,6 +45,30 @@ void	camera_init(t_camera *c, double a_r)
 	camera_upd_view(c);
 }
 
+void	*new_camera_object(t_object *obj)
+{
+	t_camera	*c;
+	int			add;
+
+	c = ft_calloc(1, sizeof(t_camera));
+	if (!c)
+		return (NULL);
+	c->type = camera;
+	if (obj->type == sphere || obj->type == cylinder)
+		add = ((t_sphere *)obj)->diameter + 2;
+	else
+		add = 5;
+	c->origin.x = ((t_sphere *)obj)->point.x + add;
+	c->origin.y = ((t_sphere *)obj)->point.y + add;
+	c->origin.z = ((t_sphere *)obj)->point.z;
+	c->dir.x = -1;
+	c->dir.y = -1;
+	c->dir.z = 0;
+	c->fov = 70;
+	camera_init(c, 16. / 9.);
+	return (c);
+}
+
 void	camera_upd_view(t_camera *c)
 {
 	t_vector	tmp;
@@ -58,4 +84,12 @@ void	camera_upd_view(t_camera *c)
 	tmp = vec_sub(c->origin, vec_div(c->horizontal, 2));
 	tmp = vec_add(tmp, vec_div(c->vertical, 2));
 	c->upper_left_corner = vec_add(tmp, vec_mul_nb(c->dir, c->focal_length));
+}
+
+int	free_camera(t_camera *cam)
+{
+	if (cam == NULL)
+		return (1);
+	free(cam);
+	return (0);
 }
