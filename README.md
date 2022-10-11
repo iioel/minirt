@@ -19,13 +19,13 @@ cd miniRT && make
 
 ## Key Bindings
 
-|   **Cam movement**    |
-| --------------------- |
-| move right      | "d" |
-| move left       | "a" |
-| move forward    | "w" |
-| move backward   | "s" |
-| look right      | "→" |
-| look left       | "←" |
-| look up         | "↑" |
-| look down       | "↓" |
+|   **Cam movement** | Key |
+| -------------------|-----|
+| move right         | "d" |
+| move left          | "a" |
+| move forward       | "w" |
+| move backward      | "s" |
+| look right         | "→" |
+| look left          | "←" |
+| look up            | "↑" |
+| look down          | "↓" |
