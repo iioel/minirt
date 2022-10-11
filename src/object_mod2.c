@@ -26,7 +26,7 @@ int	change_diameter(t_sphere *sp, int n)
 int	catch_mouse_press(int t, int x, int y, t_window *w)
 {
 	w = save_window(NULL);
-	if (t == MOUSE_R)
+	if (t == MOUSE_R || t == MOUSE_R_LNX)
 	{
 		w->x_mouse = x;
 		w->y_mouse = y;
@@ -42,7 +42,7 @@ int	catch_mouse_release(int t, int x, int y, t_window *w)
 	int	delta_y;
 
 	w = save_window(NULL);
-	if (t == MOUSE_R)
+	if (t == MOUSE_R || t == MOUSE_R_LNX)
 	{
 		delta_x = x - w->x_mouse;
 		delta_y = y - w->y_mouse;
