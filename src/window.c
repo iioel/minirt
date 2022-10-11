@@ -31,6 +31,7 @@ t_window	*create_win(int width, double a_r, char *name)
 	w->aspect_ratio = a_r;
 	w->width = width;
 	w->height = (int)(w->width / w->aspect_ratio);
+	w->old_cam = NULL;
 	w->mlx = mlx_init();
 	if (! w->mlx)
 		return (clean(w));

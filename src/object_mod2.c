@@ -73,4 +73,10 @@ void	select_obj(t_window *w, int x, int y)
 	get_nearest_obj(&(w->selected_obj), r, w->objs);
 	if (w->selected_obj)
 		define_hook_obj(w);
+	if (w->old_cam == NULL)
+		w->old_cam = w->camera;
+	else if (w->camera)
+		free_camera(w->camera);
+	w->camera = new_camera_object(w->selected_obj);
+	w->rd_i = RENDER_STEPS;
 }

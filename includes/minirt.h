@@ -43,6 +43,7 @@ typedef struct s_window
 	t_object	*selected_obj;
 	t_list		*objs;
 	t_camera	*camera;
+	t_camera	*old_cam;
 	t_ambient	*ambient;
 }				t_window;
 
