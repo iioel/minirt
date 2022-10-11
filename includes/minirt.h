@@ -90,5 +90,6 @@ char		*get_next_line(int fd);
 
 // object_mod.c
 void 		select_obj(t_window *w, int x, int y);
+int			catch_key_obj(int t, t_window *w);
 
 #endif
