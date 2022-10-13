@@ -31,7 +31,32 @@ int	render_bis(t_window *w, t_img *img)
 		{
 			if (x == 0 || (x / w->rd_i) != ((x - 1) / w->rd_i))
 			{
-				ray = pix2ray(w, x, y);
+				ray = pix2ray(w, x, y, 1);
+				ray_color(ray, &color, w->objs);
+			}
+			mlx_pixel_put_img(img, x++, y, color2int(color));
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	ssaa(t_window *w, t_img *img)
+{
+	int		x;
+	int		y;
+	t_ray	ray;
+	t_color	color;
+
+	y = 0;
+	while (y < w->height * 2)
+	{
+		x = 0;
+		while (x < w->width * 2)
+		{
+			if (x == 0 || (x / w->rd_i) != ((x - 1) / w->rd_i))
+			{
+				ray = pix2ray(w, x, y, 2);
 				ray_color(ray, &color, w->objs);
 			}
 			mlx_pixel_put_img(img, x++, y, color2int(color));
@@ -45,8 +70,13 @@ int	render(t_window *w)
 {
 	t_img	*img;
 
+	img = create_image(w);
 	if (w->rd_i == 0)
 	{
+		w->rd_i = 1;
+		ssaa(w, img);
+		mlx_destroy_image(w->mlx, img->img);
+		free(img);
 		usleep(2000);
 		return (1);
 	}

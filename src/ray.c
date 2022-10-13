@@ -30,15 +30,15 @@ t_point	ray_at(const t_ray ray, const double t)
 	return (dest);
 }
 
-t_ray	pix2ray(t_window *w, int x, int y)
+t_ray	pix2ray(t_window *w, int x, int y, int scale)
 {
 	t_ray		ray;
 	t_vector	tmp;
 	double		u;
 	double		v;
 
-	u = (double)(x / w->rd_i) / (double)(w->width / w->rd_i);
-	v = (double)(y / w->rd_i) / (double)(w->height / w->rd_i);
+	u = (double)(x / w->rd_i) / (double)((w->width * scale) / w->rd_i);
+	v = (double)(y / w->rd_i) / (double)((w->height * scale) / w->rd_i);
 	tmp = vec_add(w->camera->upper_left_corner,
 			vec_mul_nb(w->camera->horizontal, u));
 	tmp = vec_sub(tmp, vec_mul_nb(w->camera->vertical, v));

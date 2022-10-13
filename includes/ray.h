@@ -28,7 +28,7 @@ typedef struct s_ray
 
 t_ray	ray_init(t_point orign, t_vector dir);
 t_point	ray_at(const t_ray ray, const double t);
-t_ray	pix2ray(t_window *w, int x, int y);
+t_ray	pix2ray(t_window *w, int x, int y, int scale);
 int		ray_color(t_ray ray, t_color *color, t_list *objs);
 int		get_ray_color(t_ray ray, t_color *color, t_list *lst);
 
