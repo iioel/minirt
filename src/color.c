@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "color.h"
+#include "stdio.h"
 
 t_color	color_init(char r, char g, char b)
 {
@@ -54,6 +55,8 @@ int	color2int(t_color c)
 
 void	int2color(int n, t_color *c)
 {
+	if (n == -1)
+		c->r = -1;
 	c->r = (n & 0xff0000) >> 16;
 	c->g = (n & 0x00ff00) >> 8;
 	c->b = (n & 0x0000ff);
@@ -61,7 +64,8 @@ void	int2color(int n, t_color *c)
 
 void	color_moy(t_color *result, t_color *c1, t_color *c2, int mult)
 {
-	result->r = ((c1->r * mult) + c2->r) / mult + 1;
-	result->g = ((c1->g * mult) + c2->g) / mult + 1;
-	result->b = ((c1->b * mult) + c2->b) / mult + 1;
+	//printf("%i\n", mult);
+	result->r = ((c1->r * mult) + c2->r) / (mult + 1);
+	result->g = ((c1->g * mult) + c2->g) / (mult + 1);
+	result->b = ((c1->b * mult) + c2->b) / (mult + 1);
 }

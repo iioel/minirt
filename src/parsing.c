@@ -31,6 +31,7 @@ t_list	*parsing(char *file)
 		if (!tmp)
 			return (NULL);
 		ft_lstadd_back(&lst, ft_lstnew(tmp));
+		free(str);
 		str = get_next_line(fd);
 	}
 	close(fd);

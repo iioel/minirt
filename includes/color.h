@@ -24,5 +24,7 @@ t_color	color_init(char r, char g, char b);
 t_color	color_add(t_color c1, t_color c2);
 t_color	color_max(t_color c1, t_color c2);
 int		color2int(t_color c);
+void	int2color(int n, t_color *c);
+void	color_moy(t_color *result, t_color *c1, t_color *c2, int mult);
 
 #endif

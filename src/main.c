@@ -41,47 +41,44 @@ int	render_bis(t_window *w, t_img *img)
 	return (0);
 }
 
-int	ssaa(t_window *w, t_img *img)
+int	ssaa(t_window *w, t_img *img, int scale)
 {
 	int		x;
 	int		y;
 	t_ray	ray;
-	t_color	color;
+	t_color	color[2];
 
-	y = 0;
-	while (y < w->height * 2)
+	y = -1;
+	w->rd_i = 1;
+	while (++y < w->height * scale)
 	{
-		x = 0;
-		while (x < w->width * 2)
+		x = -1;
+		while (++x < w->width * scale)
 		{
 			if (x == 0 || (x / w->rd_i) != ((x - 1) / w->rd_i))
 			{
-				ray = pix2ray(w, x, y, 2);
-				ray_color(ray, &color, w->objs);
+				ray = pix2ray(w, x, y, scale);
+				ray_color(ray, &(color[0]), w->objs);
+				int2color(mlx_get_c(img, x / scale, y / scale), &color[1]);
+				color_moy(&(color[0]), &color[1], &color[0], x % scale
+					+ (y % scale * scale));
 			}
-			mlx_pixel_put_img(img, x++, y, color2int(color));
+			mlx_pixel_put_img(img, x / scale, y / scale, color2int(color[0]));
 		}
-		y++;
 	}
 	return (0);
 }
 
 int	render(t_window *w)
 {
-	t_img	*img;
+	t_img		*img;
+	static int	scale = 2;
 
 	img = create_image(w);
 	if (w->rd_i == 0)
-	{
-		w->rd_i = 1;
-		ssaa(w, img);
-		mlx_destroy_image(w->mlx, img->img);
-		free(img);
-		usleep(2000);
-		return (1);
-	}
-	img = create_image(w);
-	render_bis(w, img);
+		ssaa(w, img, scale++);
+	else
+		render_bis(w, img);
 	display_image(w, img);
 	mlx_destroy_image(w->mlx, img->img);
 	free(img);
@@ -104,7 +101,7 @@ int	main(int argc, char **argv)
 {
 	t_window	*w;
 
-	w = create_win(900, 16. / 9., "Minirt");
+	w = create_win(1920, 16. / 9., "Minirt");
 	w->rd_i = RENDER_STEPS;
 	if (! w)
 		exit(1);

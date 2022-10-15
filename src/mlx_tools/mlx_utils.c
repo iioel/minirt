@@ -51,3 +51,15 @@ void	mlx_pixel_put_img(t_img *img, int x, int y, unsigned int color)
 		*(unsigned int *)p_loc = color;
 	}
 }
+
+unsigned int	mlx_get_c(t_img *img, int x, int y)
+{
+	char	*p_loc;
+
+	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
+	{
+		p_loc = img->addr + (y * img->line_bytes + x * (img->pixel_bits / 8));
+		return (*(unsigned int *)p_loc);
+	}
+	return (-1);
+}
