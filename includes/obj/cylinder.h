@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:29:01 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 06:17:07 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/17 16:44:10 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ typedef struct s_cylinder
 void		*new_cylinder(char *str);
 double		cylinder_inter(t_object *o, t_ray *ray);
 t_vector	cylinder_get_normal(t_object *o, t_point p);
+double		cylinder_caps_inter(t_cylinder *c, t_ray *r);
+double		cylinder_caps_inter_2(t_cylinder *c, t_ray *r, int up_down);
 
 #endif
