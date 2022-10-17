@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/10/03 22:54:23 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/10/17 16:11:28 by yoel             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = minirt
 SRCS = main.c \
 	   ray.c \
 	   ray_utils.c \
+	   rotate.c \
 	   clean.c \
 	   window.c \
 	   gnl.c \
@@ -25,6 +26,7 @@ SRCS = main.c \
 	   obj/ambient.c \
 	   obj/camera.c \
 	   obj/cylinder.c \
+	   obj/cylinder_caps.c \
 	   obj/light.c \
 	   obj/object.c \
 	   obj/plane.c \
