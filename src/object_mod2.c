@@ -52,7 +52,7 @@ int	catch_mouse_release(int t, int x, int y, t_window *w)
 				change_diameter((t_sphere *)w->selected_obj, delta_x / 10);
 		}
 		if (w->selected_obj->type == sphere)
-		w->rd_i = RENDER_STEPS;
+			w->rd_i = RENDER_STEPS;
 	}
 	return (0);
 }
