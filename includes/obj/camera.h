@@ -22,6 +22,7 @@ typedef struct s_camera
 	t_intercept		intercept;
 	t_get_normal	get_normal;
 	t_color			color;
+	t_error			error;
 	t_point			origin;
 	t_vector		dir;
 	unsigned char	fov;

@@ -23,6 +23,7 @@ typedef struct s_ambient
 	t_intercept		intercept;
 	t_get_normal	get_normal;
 	t_color			color;
+	t_error			error;
 	double			lighting;
 }				t_ambient;
 
