@@ -22,8 +22,11 @@ t_list	*parsing(char *file)
 	str = NULL;
 	lst = ft_lstnew(NULL);
 	fd = open(file, O_RDONLY);
-	if (!fd)
+	if (fd < 0)
+	{
+		perror("minirt: ");
 		return (NULL);
+	}
 	str = get_next_line(fd);
 	while (str)
 	{
