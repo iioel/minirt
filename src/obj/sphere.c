@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:14:52 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:31:20 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:51:24 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*new_sphere(char *str)
 	return (s);
 }
 
-double	sphere_inter(t_object *o, t_ray *r)
+double	sphere_inter(t_object *o, t_ray *r, t_vector *n)
 {
 	t_vector	oc;
 	t_sphere	*sp;
@@ -53,8 +53,9 @@ double	sphere_inter(t_object *o, t_ray *r)
 		t1 = (-eq[B] + sqrt(eq[DESC])) / (2 * eq[A]);
 		t2 = (-eq[B] - sqrt(eq[DESC])) / (2 * eq[A]);
 		if (t2 >= 0 && t2 < t1)
-			return (t2);
+			t1 = t2;
 	}
+	*n = sphere_get_normal(o, vec_add(r->origin, vec_mul_nb(r->dir, t1)));
 	return (t1);
 }
 

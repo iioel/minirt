@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/10/17 16:11:28 by yoel             ###   ########.fr        #
+#    Updated: 2022/10/18 16:50:51 by ycornamu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ LIBFT_DIR = libft
 MLX =
 
 MAKE = make --no-print-directory
-CC = clang
+CC = gcc
 DEBUG_CFLAGS = -g3 -fsanitize=address -fno-omit-frame-pointer
 
 UNAME = $(shell uname -s)

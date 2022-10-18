@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:19:22 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 17:46:36 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:02:45 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_object		t_object;
 typedef struct s_window		t_window;
+typedef struct s_hit		t_hit;
 
 typedef struct s_ray
 {
@@ -33,6 +34,5 @@ int		ray_color(t_ray ray, t_color *color, t_list *objs);
 int		get_ray_color(t_ray ray, t_color *color, t_list *lst);
 
 // ray_utils.c
-double	get_nearest_obj(t_object **obj, t_ray ray, t_list *lst);
-
+int		get_nearest_obj(t_hit *hit, t_ray *ray, t_list *lst);
 #endif
