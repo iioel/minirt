@@ -6,7 +6,7 @@
 /*   By: yoel <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:45:23 by yoel              #+#    #+#             */
-/*   Updated: 2022/10/17 16:32:07 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/18 09:00:46 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 double	cylinder_caps_inter(t_cylinder *c, t_ray *r)
 {
-	double	t;
-	double	d_len;
+	double	t1;
+	double	t2;
+	double	d1_len;
+	double	d2_len;
 	double	d_len_max;
 
 	d_len_max = sqrt((c->height / 2) * (c->height / 2)
 			+ (c->diameter / 2) * (c->diameter / 2));
-	t = cylinder_caps_inter_2(c, r, 1);
-	d_len = vec_length(vec_sub(vec_add(r->origin, vec_mul_nb(r->dir, t)),
+	t1 = cylinder_caps_inter_2(c, r, 1);
+	t2 = cylinder_caps_inter_2(c, r, -1);
+	d1_len = vec_length(vec_sub(vec_add(r->origin, vec_mul_nb(r->dir, t1)),
 				c->point));
-	if (d_len > d_len_max)
+	d2_len = vec_length(vec_sub(vec_add(r->origin, vec_mul_nb(r->dir, t2)),
+				c->point));
+	if (d1_len <= d_len_max && t1 >= 0)
 	{
-		t = cylinder_caps_inter_2(c, r, -1);
-		d_len = vec_length(vec_sub(vec_add(r->origin, vec_mul_nb(r->dir, t)),
-					c->point));
-		if (d_len > d_len_max)
-			return (-1);
+		if (d2_len <= d_len_max && t2 >= 0 && t2 < t1)
+			return (t2);
+		return (t1);
 	}
-	return (t);
+	else if (d2_len <= d_len_max && t2 >= 0)
+		return (t2);
+	return (-1);
 }
 
 double	cylinder_caps_inter_2(t_cylinder *c, t_ray *r, int up_down)
