@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:26:31 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:29:10 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:01:58 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ static void	define_hook_obj(t_window *w)
 void	select_obj(t_window *w, int x, int y)
 {
 	t_ray		r;
+	t_hit		hit;
 
 	w->rd_i = 1;
 	r = pix2ray(w, x, y);
-	get_nearest_obj(&(w->selected_obj), r, w->objs);
+	get_nearest_obj(&hit, &r, w->objs);
+	w->selected_obj = hit.o;
 	if (w->selected_obj)
 		define_hook_obj(w);
 	if (w->old_cam == NULL)
