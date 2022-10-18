@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:22:25 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 12:45:27 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:45:28 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,12 @@ int	ray_color(t_ray ray, t_color *color, t_list *objs)
 
 int	get_ray_color(t_ray ray, t_color *color, t_list *lst)
 {
-	double		nearest;
-	t_object	*nearest_obj;
-	t_ambient	*a;
+	t_hit		hit;
 
-	a = (t_ambient *)get_obj(ambient, lst);
-	nearest_obj = NULL;
-	nearest = get_nearest_obj(&nearest_obj, ray, lst);
-	if (nearest_obj)
+	if (get_nearest_obj(&hit, &ray, lst))
 	{
-		*color = compute_ambiant(a, nearest_obj->color);
-		*color = color_max(*color, compute_lights(nearest_obj, ray, nearest,
-					lst));
+		*color = compute_ambiant(&hit, lst);
+		*color = color_max(*color, compute_lights(&hit, lst));
 	}
-	return (nearest_obj == NULL);
+	return (hit.o == NULL);
 }

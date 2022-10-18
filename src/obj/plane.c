@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:18:33 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:31:12 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:49:38 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*new_plane(char *str)
 	return (p);
 }
 
-double	plane_inter(t_object *o, t_ray *r)
+double	plane_inter(t_object *o, t_ray *r, t_vector *n)
 {
 	t_plane		*pl;
 	double		t;
@@ -41,6 +41,7 @@ double	plane_inter(t_object *o, t_ray *r)
 	d = vec_sub(vec_mul(pl->vect, pl->point), vec_mul(pl->vect, r->origin));
 	e = vec_mul(pl->vect, r->dir);
 	t = (d.x + d.y + d.z) / (e.x + e.y + e.z);
+	*n = plane_get_normal(o, vec_init(0, 0, 0));
 	return (t);
 }
 

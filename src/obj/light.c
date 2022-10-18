@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 20:57:20 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 15:50:53 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:50:34 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "obj/object.h"
 #include "obj/sphere.h"
 #include "ft_math.h"
+#include "hit.h"
 
 void	*new_light(char *str)
 {
@@ -37,58 +38,52 @@ t_color	add_light_color(t_light *l, double m, t_object *o, t_color c)
 	t_color	c_temp;
 
 	c_temp = color_cap(color_init(
-			((l->color.r / 255.) * m * l->brightness) * o->color.r,
-			((l->color.g / 255.) * m * l->brightness) * o->color.g,
-			((l->color.b / 255.) * m * l->brightness) * o->color.b));
+				((l->color.r / 255.) * m * l->brightness) * o->color.r,
+				((l->color.g / 255.) * m * l->brightness) * o->color.g,
+				((l->color.b / 255.) * m * l->brightness) * o->color.b));
 	c = color_add(c, c_temp);
 	return (c);
 }
 
-double	get_light_mag(t_point hit, t_vector n, t_light *l, t_list *lst)
+double	get_light_mag(t_hit *hit, t_light *l, t_list *lst)
 {
 	t_vector	light_ray_dir;
-	t_object	*obj;
-	double		d;
+	t_ray		lray;
+	t_hit		lhit;
 	double		r;
 
-	light_ray_dir = vec_unit(vec_sub(l->point, hit));
-	d = get_nearest_obj(&obj,
-			ray_init(l->point, vec_mul_nb(light_ray_dir, -1.)),
-			lst);
-	if (round(vec_length_squared(vec_sub(l->point, hit)))
-		== round(vec_length_squared(vec_mul_nb(light_ray_dir, d))))
+	light_ray_dir = vec_unit(vec_sub(l->point, hit->p));
+	lray = ray_init(l->point, vec_mul_nb(light_ray_dir, -1.));
+	get_nearest_obj(&lhit, &lray, lst);
+	if (round(vec_length_squared(vec_sub(l->point, hit->p)))
+		== round(vec_length_squared(vec_mul_nb(light_ray_dir, lhit.d))))
 	{
-		r = vec_dot(n, light_ray_dir);
-		if (r < 0. || vec_dot(n, light_ray_dir) < 0)
+		r = vec_dot(hit->n, light_ray_dir);
+		if (r < 0. || vec_dot(hit->n, light_ray_dir) < 0)
 			r = 0.;
-		r = r * (1 / (d * d));
+		r = r * (1 / (lhit.d * lhit.d));
 		return (r);
 	}
 	return (-1.);
 }
 
-t_color	compute_lights(t_object *o, t_ray ray, double d, t_list *lst)
+t_color	compute_lights(t_hit *hit, t_list *lst)
 {
-	t_point		hit;
-	t_vector	n;
-	t_light		*l;
-	t_color		out;
-	t_list		*lst1;
+	double	d;
+	t_light	*l;
+	t_color	out;
+	t_list	*lst1;
 
 	lst1 = lst;
 	out = color_init(0, 0, 0);
-	hit = vec_add(ray.origin, vec_mul_nb(ray.dir, d));
-	n = vec_unit(o->get_normal(o, hit));
-	if (vec_dot(n, ray.dir) > 0)
-		n = vec_mul_nb(n, -1);
 	while (lst)
 	{
 		if (((t_object *)lst->content)->type == light)
 		{
 			l = (t_light *)lst->content;
-			d = get_light_mag(hit, n, l, lst1);
+			d = get_light_mag(hit, l, lst1);
 			if (d >= 0.)
-				out = add_light_color(l, d, o, out);
+				out = add_light_color(l, d, hit->o, out);
 		}
 		lst = lst->next;
 	}

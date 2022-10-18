@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:35 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/17 16:43:39 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/18 14:39:09 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ double	cylinder_get_len(double eq[4], t_cylinder *c, t_ray *r)
 	return (t1);
 }
 
-double	cylinder_inter(t_object *o, t_ray *r)
+double	cylinder_inter(t_object *o, t_ray *r, t_vector *n)
 {
 	t_ray		rb;
 	t_vector	oc;
@@ -81,8 +81,11 @@ double	cylinder_inter(t_object *o, t_ray *r)
 	if (eq[DESC] >= 0)
 		t = cylinder_get_len(eq, c, r);
 	if (t > 0)
+	{
+		*n = cylinder_get_normal(o, vec_add(r->origin, vec_mul_nb(r->dir, t)));
 		return (t);
-	return (cylinder_caps_inter(c, r));
+	}
+	return (cylinder_caps_inter(c, r, n));
 }
 
 t_vector	cylinder_get_normal(t_object *o, t_point p)

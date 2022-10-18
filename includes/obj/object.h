@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:23:43 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:30:03 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_object		t_object;
 
-typedef double				(*t_intercept)	(t_object *, t_ray *);
+typedef double				(*t_intercept)	(t_object *, t_ray *, t_vector *);
 typedef t_vector			(*t_get_normal)	(t_object *, t_point);
 
 typedef enum e_type

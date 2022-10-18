@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 22:42:24 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:08:07 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/18 10:44:08 by ycornamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ typedef struct s_light
 }				t_light;
 
 void	*new_light(char *str);
-t_color	compute_lights(t_object *o, t_ray ray, double d, t_list *lst);
+t_color	compute_lights(t_hit *hit, t_list *lst);
 
 #endif
