@@ -12,6 +12,23 @@
 
 #include "minirt.h"
 
+void	pars_list(int fd, t_list *tmp, t_list *lst)
+{
+	char	*str;
+
+	str = get_next_line(fd);
+	while (str)
+	{
+		tmp = new_object(str);
+		free(str);
+		if (!tmp)
+			return ;
+		ft_lstadd_back(&lst, ft_lstnew(tmp));
+		str = get_next_line(fd);
+	}
+	return ;
+}
+
 t_list	*parsing(char *file)
 {
 	int		fd;
@@ -21,21 +38,14 @@ t_list	*parsing(char *file)
 
 	str = NULL;
 	lst = ft_lstnew(NULL);
+	tmp = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
 		perror("minirt: ");
-		return (NULL);
+		exit(1);
 	}
-	str = get_next_line(fd);
-	while (str)
-	{
-		tmp = new_object(str);
-		if (!tmp)
-			return (NULL);
-		ft_lstadd_back(&lst, ft_lstnew(tmp));
-		str = get_next_line(fd);
-	}
+	pars_list(fd, tmp, lst);
 	close(fd);
 	tmp = lst->next;
 	free(lst);

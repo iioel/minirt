@@ -26,6 +26,7 @@ void	*new_plane(char *str)
 	p->type = get_type(stype);
 	p->intercept = &plane_inter;
 	p->get_normal = &plane_get_normal;
+	p->error = &error_plane;
 	free(stype);
 	return (p);
 }
@@ -52,4 +53,18 @@ t_vector	plane_get_normal(t_object *o, t_point p)
 	(void)p;
 	pl = (t_plane *)o;
 	return (pl->vect);
+}
+
+int	error_plane(t_object *o)
+{
+	t_plane	*pl;
+
+	pl = (t_plane *)o;
+	if (pl->type != plane)
+		return (1);
+	if (pl->intercept == NULL || pl->get_normal == NULL)
+		return (1);
+	if (pl->color.r < 0 || pl->color.g < 0 || pl->color.b < 0)
+		return (1);
+	return (0);
 }

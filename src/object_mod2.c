@@ -75,6 +75,8 @@ void	select_obj(t_window *w, int x, int y)
 	w->selected_obj = hit.o;
 	if (w->selected_obj)
 		define_hook_obj(w);
+	else
+		return ;
 	if (w->old_cam == NULL)
 		w->old_cam = w->camera;
 	else if (w->camera)

@@ -93,6 +93,8 @@ char		*get_next_line(int fd);
 void		select_obj(t_window *w, int x, int y);
 int			catch_key_obj(int t, t_window *w);
 
-//
+// error.c
+int			print_error(char *str);
+void		error(t_list *l);
 
 #endif

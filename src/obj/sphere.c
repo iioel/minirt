@@ -27,6 +27,7 @@ void	*new_sphere(char *str)
 	s->type = get_type(stype);
 	s->intercept = &sphere_inter;
 	s->get_normal = &sphere_get_normal;
+	s->error = &error_sphere;
 	free(stype);
 	return (s);
 }

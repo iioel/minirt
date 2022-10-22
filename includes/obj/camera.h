@@ -39,5 +39,6 @@ void	camera_init(t_camera *c, double a_r);
 void	camera_upd_view(t_camera *c);
 void	*new_camera_object(t_object *obj);
 int		free_camera(t_camera *cam);
+int		error_camera(t_object *o);
 
 #endif

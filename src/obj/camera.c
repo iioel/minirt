@@ -27,9 +27,10 @@ void	*new_camera(char *str)
 	ft_sscanf(str, "%s %f,%f,%f %f,%f,%f %i", &stype, &(c->origin.x),
 		&(c->origin.y), &(c->origin.z), &(c->dir.x), &(c->dir.y),
 		&(c->dir.z), &(c->fov));
-	c->type = get_type(stype);
-	free(stype);
 	c->intercept = NULL;
+	c->type = get_type(stype);
+	c->error = &error_camera;
+	free(stype);
 	return (c);
 }
 
