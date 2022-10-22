@@ -95,6 +95,6 @@ int			catch_key_obj(int t, t_window *w);
 
 // error.c
 int			print_error(char *str);
-void		error(t_list *l);
+void		error(t_window *w);
 
 #endif

@@ -43,7 +43,11 @@ t_window	*create_win(int width, double a_r, char *name)
 
 int	clean_win(t_window *w)
 {	
+	t_list	*lst;
+
+	lst = w->objs;
 	mlx_destroy_window(w->mlx, w->w);
+	ft_lstclear(&(w->objs), &free);
 	free(w);
 	return (0);
 }
