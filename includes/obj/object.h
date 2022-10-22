@@ -46,6 +46,7 @@ struct s_object
 };
 
 t_type		get_type(char *str);
+char		*get_strtype(t_type t);
 void		*new_object(char *str);
 t_object	*get_obj(t_type type, t_list *lst);
 

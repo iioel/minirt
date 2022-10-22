@@ -24,6 +24,7 @@ void	*new_ambient(char *str)
 		&(a->color.g), &(a->color.b));
 	a->type = get_type(stype);
 	a->intercept = NULL;
+	a->error = &error_ambient;
 	free(stype);
 	return (a);
 }

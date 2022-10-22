@@ -81,10 +81,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		w->objs = parsing(argv[1]);
 	else
-	{
-		printf("Please provide a config file !!!\nExiting...\n");
-		exit(1);
-	}
+		exit(print_error("Please provide a config file !!!\nExiting...\n"));
+	error(w->objs);
 	w->camera = (t_camera *)get_obj(camera, w->objs);
 	camera_init(w->camera, 16. / 9.);
 	w->ambient = (t_ambient *)get_obj(ambient, w->objs);

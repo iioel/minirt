@@ -29,6 +29,7 @@ void	*new_light(char *str)
 		&(l->color.g), &(l->color.b));
 	l->type = get_type(stype);
 	l->intercept = NULL;
+	l->error = &error_light;
 	free(stype);
 	return (l);
 }

@@ -39,13 +39,15 @@ SRCS = main.c \
 	   mlx_tools/catch_mouse.c \
 	   mlx_tools/mlx_utils.c\
 	   object_mod.c\
-	   object_mod2.c
+	   object_mod2.c\
+	   error/error_object.c\
+	   error/error.c
 SRCS_DIR = src
 
 OBJS = $(SRCS:.c=.o)
 OBJS_DIR = obj
 
-DIRS = obj obj/vector obj/mlx_tools obj/obj
+DIRS = obj obj/vector obj/mlx_tools obj/obj obj/error
 
 _SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS))
 _OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))
@@ -75,7 +77,7 @@ ifeq ($(UNAME), Linux)
     CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR)/inc -Wall -Wextra -Werror
     LFLAGS = $(CFLAGS) -lmlx -lXext -lX11 -lm -L $(MLX_DIR)
 	MLX_LIB = $(MLX_DIR)/libmlx.a
-    DEBUG_LFLAGS = -static-libasan
+    DEBUG_LFLAGS = -static-libsan
 endif
 ifeq ($(UNAME), Darwin)
 	MLX_DIR = minilibx_osx

@@ -13,6 +13,24 @@
 #include "objects.h"
 #include "obj/object.h"
 
+char	*get_strtype(t_type type)
+{
+	if (type == ambient)
+		return (ft_strdup("ambient"));
+	else if (type == camera)
+		return (ft_strdup("camera"));
+	else if (type == light)
+		return (ft_strdup("light"));
+	else if (type == sphere)
+		return (ft_strdup("sphere"));
+	else if (type == plane)
+		return (ft_strdup("plane"));
+	else if (type == cylinder)
+		return (ft_strdup("cylinder"));
+	else
+		return (ft_strdup("unknown"));
+}
+
 t_type	get_type(char *str)
 {
 	if (!ft_strncmp("A", str, ft_strlen("A") + 1))

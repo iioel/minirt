@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:35 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 16:27:37 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 16:37:21 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*new_cylinder(char *str)
 	c->diam_half_pow = c->diam_half * c->diam_half;
 	c->height_half = c->height / 2.;
 	c->half_sqrt = sqrt(c->diam_half_pow + (c->height_half * c->height_half));
+	c->error = &error_cylinder;
 	free(stype);
 	return (c);
 }

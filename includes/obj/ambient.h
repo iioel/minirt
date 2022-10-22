@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:21:57 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 13:43:55 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:38:18 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ typedef struct s_ambient
 
 void	*new_ambient(char *str);
 t_color	compute_ambiant(t_hit *hit, t_list *lst);
+int		error_ambient(t_object *o);
 
 #endif

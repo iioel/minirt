@@ -29,5 +29,6 @@ typedef struct s_sphere
 void		*new_sphere(char *str);
 double		sphere_inter(t_object *o, t_ray *r, t_vector *n);
 t_vector	sphere_get_normal(t_object *o, t_point p);
+int			error_sphere(t_object *o);
 
 #endif

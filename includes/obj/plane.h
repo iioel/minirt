@@ -29,5 +29,6 @@ typedef struct s_plane
 void		*new_plane(char *str);
 double		plane_inter(t_object *o, t_ray *r, t_vector *n);
 t_vector	plane_get_normal(t_object *o, t_point p);
+int			error_plane(t_object *o);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:29:01 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 16:25:18 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 16:38:04 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ double		cylinder_inter(t_object *o, t_ray *ray, t_vector *n);
 t_vector	cylinder_get_normal(t_object *o, t_point p);
 double		cylinder_caps_inter(t_cylinder *c, t_ray *r, t_vector *n);
 double		cylinder_caps_inter_2(t_cylinder *c, t_ray *r, int up_down);
+int			error_cylinder(t_object *o);
 
 #endif
