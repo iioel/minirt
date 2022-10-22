@@ -36,12 +36,14 @@ void	error_message(int i, t_type t)
 	print_error("\n");
 }
 
-void	error(t_list *l)
+void	error(t_window *w)
 {
 	int		i;
 	int		flag;
+	t_list	*l;
 
 	i = 0;
+	l = w->objs;
 	flag = 0;
 	while (l)
 	{
@@ -52,6 +54,7 @@ void	error(t_list *l)
 			if (((t_object *)l->content)->error(l->content))
 			{
 				error_message(i, ((t_object *)l->content)->type);
+				clean_win(w);
 				exit(1);
 			}
 		}

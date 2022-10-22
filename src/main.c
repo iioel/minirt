@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 		w->objs = parsing(argv[1]);
 	else
 		exit(print_error("Please provide a config file !!!\nExiting...\n"));
-	error(w->objs);
+	error(w);
 	w->camera = (t_camera *)get_obj(camera, w->objs);
 	camera_init(w->camera, 16. / 9.);
 	w->ambient = (t_ambient *)get_obj(ambient, w->objs);
