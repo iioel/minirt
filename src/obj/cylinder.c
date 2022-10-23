@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:35 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:39:09 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:09:46 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ double	cylinder_get_len(double eq[4], t_cylinder *c, t_ray *r)
 	double		t2;
 	double		max;
 
-	t1 = -1;
-	if (eq[DESC] == 0)
-		t1 = -(eq[B] / (2 * eq[A]));
-	else if (eq[DESC] > 0)
+	t1 = -1.;
+	if (eq[DESC] == 0.)
+		t1 = -(eq[B] / (2. * eq[A]));
+	else if (eq[DESC] > 0.)
 	{
-		t1 = (-eq[B] + sqrt(eq[DESC])) / (2 * eq[A]);
-		t2 = (-eq[B] - sqrt(eq[DESC])) / (2 * eq[A]);
-		if (t2 >= 0 && t2 < t1)
+		t1 = (-eq[B] + sqrt(eq[DESC])) / (2. * eq[A]);
+		t2 = (-eq[B] - sqrt(eq[DESC])) / (2. * eq[A]);
+		if (t2 >= 0. && t2 < t1)
 			t1 = t2;
 	}
-	max = sqrt((c->height / 2) * (c->height / 2)
-			+ (c->diameter / 2) * (c->diameter / 2));
+	max = sqrt((c->height / 2.) * (c->height / 2.)
+			+ (c->diameter / 2.) * (c->diameter / 2.));
 	p = vec_add(r->origin, vec_mul_nb(r->dir, t1));
 	len = vec_sub(p, c->point);
 	if (vec_length(len) > max)
@@ -66,9 +66,9 @@ double	cylinder_inter(t_object *o, t_ray *r, t_vector *n)
 	t_vector	oc;
 	t_cylinder	*c;
 	double		eq[4];
-	double		t;
+	double		t[2];
 
-	t = -1;
+	t[0] = -1.;
 	c = (t_cylinder *)o;
 	rb.origin = r->origin;
 	rb.dir = vec_cross(r->dir, c->vect);
@@ -76,16 +76,17 @@ double	cylinder_inter(t_object *o, t_ray *r, t_vector *n)
 	eq[A] = vec_dot(rb.dir, rb.dir);
 	eq[B] = 2. * vec_dot(rb.dir, vec_cross(oc, c->vect));
 	eq[C] = vec_dot(vec_cross(oc, c->vect), vec_cross(oc, c->vect))
-		- (c->diameter / 2) * (c->diameter / 2);
-	eq[DESC] = (eq[B] * eq[B]) - 4 * eq[A] * eq[C];
-	if (eq[DESC] >= 0)
-		t = cylinder_get_len(eq, c, r);
-	if (t > 0)
-	{
-		*n = cylinder_get_normal(o, vec_add(r->origin, vec_mul_nb(r->dir, t)));
-		return (t);
-	}
-	return (cylinder_caps_inter(c, r, n));
+		- (c->diameter / 2.) * (c->diameter / 2.);
+	eq[DESC] = (eq[B] * eq[B]) - 4. * eq[A] * eq[C];
+	if (eq[DESC] >= 0.)
+		t[0] = cylinder_get_len(eq, c, r);
+	t[1] = cylinder_caps_inter(c, r, n);
+	if ((t[0] >= 0. && t[0] < t[1]) || t[1] < 0.)
+		*n = cylinder_get_normal(o, vec_add(r->origin,
+					vec_mul_nb(r->dir, t[0])));
+	if ((t[0] >= 0. && t[0] < t[1]) || t[1] < 0.)
+		return (t[0]);
+	return (t[1]);
 }
 
 t_vector	cylinder_get_normal(t_object *o, t_point p)
@@ -98,21 +99,21 @@ t_vector	cylinder_get_normal(t_object *o, t_point p)
 
 	c = (t_cylinder *)o;
 	c->vect = vec_unit(c->vect);
-	ax = atan(c->vect.z / c->vect.x) * 180 / M_PI;
-	if (c->vect.x < 0)
-		ax += 180;
-	ay = acos(c->vect.y / 1) * 180 / M_PI;
-	if (c->vect.y == 1. || c->vect.y == -1)
+	ax = atan(c->vect.z / c->vect.x) * 180. / M_PI;
+	if (c->vect.x < 0.)
+		ax += 180.;
+	ay = acos(c->vect.y / 1.) * 180. / M_PI;
+	if (c->vect.y == 1. || c->vect.y == -1.)
 		ax = 0.;
-	if (c->vect.y == 1. || c->vect.y == -1)
+	if (c->vect.y == 1. || c->vect.y == -1.)
 		ay = 0.;
 	pbis = vec_sub(p, c->point);
-	pbis = rotate(pbis, 0, ax, ay);
+	pbis = rotate(pbis, 0., ax, ay);
 	pbis = vec_add(pbis, c->point);
 	cpoint = vec_dup(c->point);
 	cpoint.y = pbis.y;
 	cpoint = vec_sub(cpoint, c->point);
-	cpoint = rev_rotate(cpoint, 0, -ax, -ay);
+	cpoint = rev_rotate(cpoint, 0., -ax, -ay);
 	cpoint = vec_add(cpoint, c->point);
 	return (vec_unit(vec_sub(p, cpoint)));
 }
