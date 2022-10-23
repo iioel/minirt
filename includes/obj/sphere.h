@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:26:31 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:31:08 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:52:36 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef struct s_sphere
 {
 	t_type			type;
 	t_intercept		intercept;
-	t_get_normal	get_normal;
 	t_color			color;
 	t_error			error;
 	t_point			point;

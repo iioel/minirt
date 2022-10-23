@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:14:52 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:51:24 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:51:20 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	*new_sphere(char *str)
 		&(s->color.g), &(s->color.b));
 	s->type = get_type(stype);
 	s->intercept = &sphere_inter;
-	s->get_normal = &sphere_get_normal;
 	s->error = &error_sphere;
 	free(stype);
 	return (s);

@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 22:42:24 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 16:37:46 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 16:52:09 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_light
 {
 	t_type			type;
 	t_intercept		intercept;
-	t_get_normal	get_normal;
 	t_color			color;
 	t_error			error;
 	t_point			point;

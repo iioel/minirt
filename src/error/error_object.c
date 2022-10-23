@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:26:31 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 18:29:10 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:54:35 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	error_sphere(t_object *o)
 	s = (t_sphere *)o;
 	if (s->type != sphere)
 		return (1);
-	if (s->intercept == NULL || s->get_normal == NULL)
+	if (s->intercept == NULL)
 		return (1);
 	if (s->color.r < 0 || s->color.g < 0 || s->color.b < 0)
 		return (1);
@@ -35,7 +35,7 @@ int	error_ambient(t_object *o)
 	a = (t_ambient *)o;
 	if (a->type != ambient)
 		return (1);
-	if (a->intercept != NULL || a->get_normal != NULL)
+	if (a->intercept != NULL)
 		return (1);
 	if (a->color.r < 0 || a->color.g < 0 || a->color.b < 0)
 		return (1);
@@ -65,7 +65,7 @@ int	error_cylinder(t_object *o)
 	cy = (t_cylinder *)o;
 	if (cy->type != cylinder)
 		return (1);
-	if (cy->intercept != NULL || cy->get_normal != NULL)
+	if (cy->intercept != NULL)
 		return (1);
 	if (cy->color.r < 0 || cy->color.g < 0 || cy->color.b < 0)
 		return (1);
@@ -81,7 +81,7 @@ int	error_light(t_object *o)
 	l = (t_light *)o;
 	if (l->type != light)
 		return (1);
-	if (l->intercept != NULL || l->get_normal != NULL)
+	if (l->intercept != NULL)
 		return (1);
 	if (l->color.r < 0 || l->color.g < 0 || l->color.b < 0)
 		return (1);
