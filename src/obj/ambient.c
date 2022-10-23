@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:16:26 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 10:41:10 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:32:35 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_color	compute_ambiant(t_hit *hit, t_list *lst)
 
 	c = hit->o->color;
 	a = (t_ambient *)get_obj(ambient, lst);
+	if (a == NULL)
+		return (c);
 	out.r = (a->color.r * a->lighting) / 255. * c.r;
 	out.g = (a->color.g * a->lighting) / 255. * c.g;
 	out.b = (a->color.b * a->lighting) / 255. * c.b;

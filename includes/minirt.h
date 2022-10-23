@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/04 04:52:06 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 18:34:21 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_window
 	t_list		*objs;
 	t_camera	*camera;
 	t_camera	*old_cam;
-	t_ambient	*ambient;
 }				t_window;
 
 typedef struct s_img
