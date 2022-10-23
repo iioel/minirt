@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:35 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 16:37:21 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 16:49:48 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	*new_cylinder(char *str)
 		&(c->color.r), &(c->color.g), &(c->color.b));
 	c->type = get_type(stype);
 	c->intercept = &cylinder_inter;
-	c->get_normal = &cylinder_get_normal;
 	c->diam_half = c->diameter / 2.;
 	c->diam_half_pow = c->diam_half * c->diam_half;
 	c->height_half = c->height / 2.;

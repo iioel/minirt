@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:21:57 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 16:38:18 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 16:51:49 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_ambient
 {
 	t_type			type;
 	t_intercept		intercept;
-	t_get_normal	get_normal;
 	t_color			color;
 	t_error			error;
 	double			lighting;

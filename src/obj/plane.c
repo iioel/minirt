@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:18:33 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:49:38 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:53:11 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	*new_plane(char *str)
 		&(p->vect.z), &(p->color.r), &(p->color.g), &(p->color.b));
 	p->type = get_type(stype);
 	p->intercept = &plane_inter;
-	p->get_normal = &plane_get_normal;
 	p->error = &error_plane;
 	free(stype);
 	return (p);
@@ -62,7 +61,7 @@ int	error_plane(t_object *o)
 	pl = (t_plane *)o;
 	if (pl->type != plane)
 		return (1);
-	if (pl->intercept == NULL || pl->get_normal == NULL)
+	if (pl->intercept == NULL)
 		return (1);
 	if (pl->color.r < 0 || pl->color.g < 0 || pl->color.b < 0)
 		return (1);
