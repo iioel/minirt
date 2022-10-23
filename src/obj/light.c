@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 20:57:20 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 16:50:34 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:53:08 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ double	get_light_mag(t_hit *hit, t_light *l, t_list *lst)
 	t_ray		lray;
 	t_hit		lhit;
 	double		r;
+	double		d[2];
 
 	light_ray_dir = vec_unit(vec_sub(l->point, hit->p));
 	lray = ray_init(l->point, vec_mul_nb(light_ray_dir, -1.));
 	get_nearest_obj(&lhit, &lray, lst);
-	if (round(vec_length_squared(vec_sub(l->point, hit->p)))
-		== round(vec_length_squared(vec_mul_nb(light_ray_dir, lhit.d))))
+	d[0] = vec_length_squared(vec_sub(l->point, hit->p));
+	d[1] = vec_length_squared(vec_mul_nb(light_ray_dir, lhit.d));
+	if (d[0] - d[1] <= 0.0002 && d[0] - d[1] >= -0.0002)
 	{
 		r = vec_dot(hit->n, light_ray_dir);
 		if (r < 0. || vec_dot(hit->n, light_ray_dir) < 0)
