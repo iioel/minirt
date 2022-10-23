@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:35:23 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/09/06 14:42:04 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:41:53 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ t_window	*create_win(int width, double a_r, char *name)
 
 int	clean_win(t_window *w)
 {	
-	t_list	*lst;
-
-	lst = w->objs;
 	mlx_destroy_window(w->mlx, w->w);
 	ft_lstclear(&(w->objs), &free);
 	free(w);
