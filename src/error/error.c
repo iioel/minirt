@@ -36,19 +36,44 @@ void	error_message(int i, t_type t)
 	print_error("\n");
 }
 
+void	exit_print(t_window *w, char *str)
+{
+	clean_win(w);
+	exit(print_error(str));
+}
+
+void	check_once(t_window *w, t_list *l)
+{
+	static int	n_cam = 0;
+	static int	n_amb = 0;
+
+	if (((t_object *)l->content)->type == camera)
+		n_cam++;
+	else if (((t_object *)l->content)->type == ambient)
+		n_amb++;
+	if (!l->next)
+	{
+		if (n_cam == 0)
+			exit_print(w, "minirt: there is no camera in your file\n");
+		else if (n_cam > 1)
+			exit_print(w,
+				"minirt: there is more than one camera in your file\n");
+		if (n_amb > 1)
+			exit_print(w,
+				"minirt: there is more than one ambient light in your file\n");
+	}
+}
+
 void	error(t_window *w)
 {
 	int		i;
-	int		flag;
 	t_list	*l;
 
 	i = 0;
 	l = w->objs;
-	flag = 0;
 	while (l)
 	{
-		if (((t_object *)l->content)->type == camera)
-			flag = 1;
+		check_once(w, l);
 		if (((t_object *)l->content)->error)
 		{	
 			if (((t_object *)l->content)->error(l->content))
@@ -61,6 +86,4 @@ void	error(t_window *w)
 		l = l->next;
 		i++;
 	}
-	if (!flag)
-		exit(print_error("minirt: there is no camera in your file\n"));
 }
