@@ -37,5 +37,6 @@ t_vector	cylinder_get_normal(t_object *o, t_point p);
 double		cylinder_caps_inter(t_cylinder *c, t_ray *r, t_vector *n);
 double		cylinder_caps_inter_2(t_cylinder *c, t_ray *r, int up_down);
 int			error_cylinder(t_object *o);
+void		cylinder_reloads(t_cylinder *c);
 
 #endif

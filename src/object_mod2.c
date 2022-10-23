@@ -12,14 +12,14 @@
 
 #include "minirt.h"
 
-int	change_diameter(t_sphere *sp, int n)
+int	change_v(double *value, int n)
 {
-	if (n > sp->diameter * 2)
-		sp->diameter = sp->diameter * 2;
-	else if (sp->diameter + n <= 0)
-		sp->diameter = 1;
+	if (n > *value * 2)
+		*value = *value * 2;
+	else if (*value + n <= 0)
+		*value = 1;
 	else
-		sp->diameter += n;
+		*value += n;
 	return (0);
 }
 
@@ -38,20 +38,28 @@ int	catch_mouse_press(int t, int x, int y, t_window *w)
 
 int	catch_mouse_release(int t, int x, int y, t_window *w)
 {
-	int	delta_x;
-	int	delta_y;
+	int	d_x;
+	int	d_y;
 
 	w = save_window(NULL);
 	if (t == MOUSE_R || t == MOUSE_R_LNX)
 	{
-		delta_x = x - w->x_mouse;
-		delta_y = y - w->y_mouse;
-		if (delta_x != 0 && delta_y != 0)
+		d_x = x - w->x_mouse;
+		d_y = y - w->y_mouse;
+		if (d_x != 0 && d_y != 0)
 		{
 			if (w->selected_obj->type == sphere)
-				change_diameter((t_sphere *)w->selected_obj, delta_x / 10);
+				change_v(&((t_sphere *)w->selected_obj)->diameter, d_x / 10);
+			if (w->selected_obj->type == cylinder)
+				change_v(&((t_cylinder *)w->selected_obj)->diameter, d_x / 10);
+			if (w->selected_obj->type == cylinder)
+				change_v(&((t_cylinder *)w->selected_obj)->height, -d_y / 10);
+			if (w->selected_obj->type == cylinder)
+				cylinder_reloads(((t_cylinder *)w->selected_obj));
 		}
 		if (w->selected_obj->type == sphere)
+			w->rd_i = RENDER_STEPS;
+		else if (w->selected_obj->type == cylinder)
 			w->rd_i = RENDER_STEPS;
 	}
 	return (0);
