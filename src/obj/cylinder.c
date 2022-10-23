@@ -28,13 +28,18 @@ void	*new_cylinder(char *str)
 		&(c->color.r), &(c->color.g), &(c->color.b));
 	c->type = get_type(stype);
 	c->intercept = &cylinder_inter;
+	cylinder_reloads(c);
+	c->error = &error_cylinder;
+	free(stype);
+	return (c);
+}
+
+void	cylinder_reloads(t_cylinder *c)
+{
 	c->diam_half = c->diameter / 2.;
 	c->diam_half_pow = c->diam_half * c->diam_half;
 	c->height_half = c->height / 2.;
 	c->half_sqrt = sqrt(c->diam_half_pow + (c->height_half * c->height_half));
-	c->error = &error_cylinder;
-	free(stype);
-	return (c);
 }
 
 double	cylinder_get_len(double eq[4], t_cylinder *c, t_ray *r)

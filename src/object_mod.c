@@ -64,7 +64,7 @@ int	catch_key_vec(int t, t_window *w)
 	}
 	else if (t == KEY_V || t == KEY_V_LNX)
 		mlx_hook(w->w, 2, (1L << 0), catch_key_obj, w);
-	if (w->selected_obj->type == plane)
+	if (w->selected_obj->type == plane || w->selected_obj->type == cylinder)
 		modify_vec(&((t_plane *)w->selected_obj)->vect, t);
 	w->rd_i = RENDER_STEPS;
 	return (0);
@@ -88,7 +88,8 @@ int	catch_key_obj(int t, t_window *w)
 		free_camera(w->camera);
 		exit(clean_win(w));
 	}
-	else if ((t == KEY_V || t == KEY_V_LNX) && w->selected_obj->type == plane)
+	else if ((t == KEY_V || t == KEY_V_LNX) && (w->selected_obj->type == plane
+			|| (w->selected_obj->type == cylinder)))
 		mlx_hook(w->w, 2, (1L << 0), catch_key_vec, w);
 	if (w->selected_obj != NULL)
 		modify_vec(&((t_plane *)w->selected_obj)->point, t);
