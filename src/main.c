@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 18:22:29 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 18:33:46 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	main(int argc, char **argv)
 	error(w);
 	w->camera = (t_camera *)get_obj(camera, w->objs);
 	camera_init(w->camera, 16. / 9.);
-	w->ambient = (t_ambient *)get_obj(ambient, w->objs);
 	printf("Windows size x: %d y: %d \n", w->width, w->height);
 	save_window(w);
 	render(w);
