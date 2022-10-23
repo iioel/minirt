@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:17:35 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 12:09:46 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 16:27:37 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	*new_cylinder(char *str)
 	c->type = get_type(stype);
 	c->intercept = &cylinder_inter;
 	c->get_normal = &cylinder_get_normal;
+	c->diam_half = c->diameter / 2.;
+	c->diam_half_pow = c->diam_half * c->diam_half;
+	c->height_half = c->height / 2.;
+	c->half_sqrt = sqrt(c->diam_half_pow + (c->height_half * c->height_half));
 	free(stype);
 	return (c);
 }
@@ -51,8 +55,7 @@ double	cylinder_get_len(double eq[4], t_cylinder *c, t_ray *r)
 		if (t2 >= 0. && t2 < t1)
 			t1 = t2;
 	}
-	max = sqrt((c->height / 2.) * (c->height / 2.)
-			+ (c->diameter / 2.) * (c->diameter / 2.));
+	max = c->half_sqrt;
 	p = vec_add(r->origin, vec_mul_nb(r->dir, t1));
 	len = vec_sub(p, c->point);
 	if (vec_length(len) > max)
@@ -76,7 +79,7 @@ double	cylinder_inter(t_object *o, t_ray *r, t_vector *n)
 	eq[A] = vec_dot(rb.dir, rb.dir);
 	eq[B] = 2. * vec_dot(rb.dir, vec_cross(oc, c->vect));
 	eq[C] = vec_dot(vec_cross(oc, c->vect), vec_cross(oc, c->vect))
-		- (c->diameter / 2.) * (c->diameter / 2.);
+		- c->diam_half_pow;
 	eq[DESC] = (eq[B] * eq[B]) - 4. * eq[A] * eq[C];
 	if (eq[DESC] >= 0.)
 		t[0] = cylinder_get_len(eq, c, r);

@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:29:01 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:48:04 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:25:18 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ typedef struct s_cylinder
 	t_vector		vect;
 	double			diameter;
 	double			height;
+	double			diam_half;
+	double			diam_half_pow;
+	double			height_half;
+	double			half_sqrt;
 }				t_cylinder;
 
 void		*new_cylinder(char *str);
