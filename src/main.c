@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:44:00 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/18 16:04:23 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:22:29 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int	main(int argc, char **argv)
 	t_window	*w;
 
 	w = create_win(900, 16. / 9., "Minirt");
-	w->rd_i = RENDER_STEPS;
 	if (! w)
 		exit(1);
+	w->rd_i = RENDER_STEPS;
 	if (argc == 2)
 		w->objs = parsing(argv[1]);
 	else
