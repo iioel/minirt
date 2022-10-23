@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:26:31 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/23 16:54:35 by yoel             ###   ########.fr       */
+/*   Updated: 2022/10/23 17:20:36 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	error_cylinder(t_object *o)
 	cy = (t_cylinder *)o;
 	if (cy->type != cylinder)
 		return (1);
-	if (cy->intercept != NULL)
+	if (cy->intercept == NULL)
 		return (1);
 	if (cy->color.r < 0 || cy->color.g < 0 || cy->color.b < 0)
 		return (1);
