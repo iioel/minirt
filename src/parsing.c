@@ -6,7 +6,7 @@
 /*   By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 11:55:05 by ycornamu          #+#    #+#             */
-/*   Updated: 2022/10/03 15:19:23 by ycornamu         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:42:38 by yoel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ t_list	*parsing(char *file)
 {
 	int		fd;
 	t_list	*lst;
-	char	*str;
 	void	*tmp;
 
-	str = NULL;
 	lst = ft_lstnew(NULL);
 	tmp = NULL;
 	fd = open(file, O_RDONLY);
