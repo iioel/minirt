@@ -6,7 +6,7 @@
 #    By: ycornamu <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:31:55 by ycornamu          #+#    #+#              #
-#    Updated: 2022/10/18 16:50:51 by ycornamu         ###   ########.fr        #
+#    Updated: 2022/10/23 17:36:51 by yoel             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ ifeq ($(UNAME), Linux)
     CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR)/inc -Wall -Wextra -Werror 
     LFLAGS = $(CFLAGS) -lmlx -lXext -lX11 -lm -L $(MLX_DIR)
 	MLX_LIB = $(MLX_DIR)/libmlx.a
-    DEBUG_LFLAGS = -static-libsan
+    DEBUG_LFLAGS = -static-libasan
 endif
 ifeq ($(UNAME), Darwin)
 	MLX_DIR = minilibx_osx
