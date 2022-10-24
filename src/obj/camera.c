@@ -42,7 +42,6 @@ void	camera_init(t_camera *c, double a_r)
 	c->viewport_height = 2.;
 	c->viewport_width = a_r * c->viewport_height;
 	c->focal_length = 1. / f;
-	printf("Fov: %d\nfocal_lgth: %f\n", c->fov, c->focal_length);
 	camera_upd_view(c);
 }
 

@@ -83,7 +83,7 @@ ifeq ($(UNAME), Darwin)
 	MLX_DIR = minilibx_osx
 	MLX_LIB = $(MLX_DIR)/libmlx.dylib
 	CFLAGS = -I $(HEADERS) -I $(MLX_DIR) -I $(LIBFT_DIR)/inc -Wall -Wextra -Werror
-	LFLAGS = #$(CFLAGS) -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
+	LFLAGS = $(CFLAGS) -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
 	DEBUG_LFLAGS = ""
 endif
 
@@ -101,8 +101,9 @@ $(NAME): $(LIBFT_DIR)/$(LIBFT) $(MLX_LIB) $(_OBJS)
 	@$(CC) $(_OBJS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) $(MLX_LIB) -o $(NAME)
 	@echo "$(_OK) $(NAME) \t\tcompiled"
 
-$(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(DIRS)
+$(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c
 	@echo "[..] $(NAME)... compiling $*.c\r\c"
+	@mkdir -p $(DIRS)
 	@$(CC) -c $(CFLAGS) $< -o $@
 	@echo "$(_CLEAR)"
 
@@ -119,9 +120,6 @@ endif
 mlx_clean:
 	@$(MAKE) -C $(MLX_DIR) clean
 	@rm -f libmlx.dylib
-
-$(DIRS):
-	@mkdir -p $(DIRS)
 
 clean: mlx_clean
 	@echo "[..] $(NAME)... removing $*.c\r\c"
