@@ -13,8 +13,6 @@
 #include "minirt.h"
 #include "action.h"
 
-static void	catch_key_ext(int t, t_window *w);
-
 int	catch_key(int t, t_window *w)
 {
 	w = save_window(NULL);
@@ -36,28 +34,5 @@ int	catch_key(int t, t_window *w)
 		move(w, BACK);
 	else if (t == KEY_D || t == KEY_D_LNX)
 		move(w, RIGHT);
-	else
-		catch_key_ext(t, w);
 	return (0);
-}
-
-static void	catch_key_ext(int t, t_window *w)
-{
-	(void)w;
-	if (t == KEY_Q || t == KEY_Q_LNX)
-		printf("Key Q pressed...\n");
-	else if (t == KEY_E || t == KEY_E_LNX)
-		printf("Key E pressed...\n");
-	else if (t == KEY_X || t == KEY_X_LNX)
-		printf("Key X pressed...\n");
-	else if (t == KEY_Y || t == KEY_Y_LNX)
-		printf("Key Y pressed...\n");
-	else if (t == KEY_Z || t == KEY_Z_LNX)
-		printf("Key Z pressed...\n");
-	else if (t == KEY_I || t == KEY_I_LNX)
-		printf("Key I pressed...\n");
-	else if (t == KEY_P || t == KEY_P_LNX)
-		printf("Key P pressed...\n");
-	else
-		printf("Key %d pressed...\n", t);
 }

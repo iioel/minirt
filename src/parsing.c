@@ -19,6 +19,11 @@ void	pars_list(int fd, t_list *tmp, t_list *lst)
 	str = get_next_line(fd);
 	while (str)
 	{
+		if (!ft_strncmp(str, "", 1))
+		{
+			str = get_next_line(fd);
+			continue ;
+		}
 		tmp = new_object(str);
 		free(str);
 		if (!tmp)

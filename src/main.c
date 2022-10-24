@@ -65,7 +65,6 @@ void	define_hooks(t_window *w)
 	mlx_hook(w->w, 2, (1L << 0), catch_key, w);
 	mlx_hook(w->w, 17, (1L << 0), catch_exit, w);
 	mlx_hook(w->w, 4, (1L << 2), catch_button_press, w);
-	mlx_hook(w->w, 5, (1L << 3), catch_button_release, w);
 	mlx_hook(w->w, 6, (1L << 8), catch_mouse_moves, w);
 	mlx_hook(w->w, 6, (1L << 6), catch_mouse_moves, w);
 }
@@ -85,7 +84,6 @@ int	main(int argc, char **argv)
 	error(w);
 	w->camera = (t_camera *)get_obj(camera, w->objs);
 	camera_init(w->camera, 16. / 9.);
-	printf("Windows size x: %d y: %d \n", w->width, w->height);
 	save_window(w);
 	render(w);
 	define_hooks(w);

@@ -14,31 +14,9 @@
 
 int	catch_button_press(int t, int x, int y, t_window *w)
 {
-	printf("x %i\ty %i\n", x, y);
 	w = save_window(NULL);
 	if (t == MOUSE_L)
 		select_obj(w, x, y);
-	else if (t == MOUSE_R)
-		printf("Mouse button RIGHT pressed ...\n");
-	else if (t == MOUSE_M)
-		printf("Mouse button MIDDLE pressed ...\n");
-	else if (t == MOUSE_DOWN)
-		printf("Mouse button DOWN pressed ...\n");
-	else if (t == MOUSE_UP)
-		printf("Mouse button UP pressed ...\n");
-	return (0);
-}
-
-int	catch_button_release(int t, t_window *w)
-{
-	w = save_window(NULL);
-	(void)w;
-	if (t == MOUSE_L)
-		printf("Mouse button LEFT released ...\n");
-	else if (t == MOUSE_R)
-		printf("Mouse button RIGHT released ...\n");
-	else if (t == MOUSE_M)
-		printf("Mouse button MIDDLE released ...\n");
 	return (0);
 }
 
